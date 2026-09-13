@@ -1,11 +1,24 @@
-{
-  "background_color": "#ffffff",
-  "dir": "ltr",
+[12/09/2026 02:09 ص] Mok Mok: manifest.json`
+[14/09/2026 02:04 ص] Mok Mok: {
+  "name": "الأَسواني | عطارة وتوابل",
+  "short_name": "الأَسواني",
+  "start_url": "/asoane1/",
   "display": "standalone",
-  "name": "اسواني",
-  "orientation": "any",
-  "scope": "/",
-  "short_name": "asvdsvdfgdfg",
-  "start_url": "/",
-  "theme_color": "#ffffff"
+  "background_color": "#ffffff",
+  "theme_color": "#198754",
+  "description": "متجر الأسواني للعطارة والتوابل والمنتجات الطبيعية",
+  "icons": [
+    {
+      "src": "https://www.pwabuilder.com/assets/images/pwa_logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://www.pwabuilder.com/assets/images/pwa_logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
