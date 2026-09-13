@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<title>الأسواني | عطارة وتوابل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+: <link rel="manifest" href="manifest.json">.
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#170f08; --bg-soft:#1f1509; --bg-card:#27190d; --bg-raised:#301f10;
+  --line:#4a371f; --line-soft:#392a17;
+  --ink:#f4e9d3; --ink-dim:#cdbd9a; --muted:#8f8064;
+  --gold:#c8922f; --gold-bright:#e3b657; --gold-glow:rgba(200,146,47,.25);
+  --paprika:#b6472b; --paprika-bright:#d66240;
+  --sage:#7c8a52; --sage-bright:#9dae6c;
+  --rose:#b3566a; --rose-bright:#d17d90;
+  --whatsapp:#4aa96c;
+  --radius-s:8px; --radius-m:14px; --radius-l:22px;
+  --shadow-card: 0 6px 18px rgba(10,6,2,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, var(--gold-glow), transparent 55%),
+    radial-gradient(ellipse 700px 500px at 100% 0%, rgba(182,71,43,.14), transparent 55%),
+    var(--bg);
+  color:var(--ink); font-family:'Cairo',sans-serif; line-height:1.65;
+  min-height:100vh; padding-bottom:78px;
+}
+h1,h2,h3,.disp{font-family:'El Messiri',serif;}
+a{color:inherit; text-decoration:none;}
+button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit;}
+input,textarea,select{font-family:inherit; color:var(--ink); background:var(--bg-card); border:1px solid var(--line); border-radius:var(--radius-s); padding:10px 12px; font-size:14.5px; width:100%;}
+input::placeholder,textarea::placeholder{color:var(--muted);}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--gold); outline-offset:1px; border-color:var(--gold);}
+::selection{background:var(--gold); color:#1a1204;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+}
+
+/* ===== Header / Nav ===== */
+header.topbar{
+  position:sticky; top:0; z-index:40;
+  background:linear-gradient(to bottom, rgba(23,15,8,.97), rgba(23,15,8,.9));
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line-soft);
+}
+.brand-row{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 16px;}
+.brand-left{display:flex; align-items:center; gap:10px;}
+.hamburger-btn{
+  width:40px; height:40px; border-radius:10px; background:var(--bg-card); border:1px solid var(--line);
+  font-size:19px; display:flex; align-items:center; justify-content:center; color:var(--gold-bright);
+  flex:0 0 auto; transition:transform .15s, border-color .2s;
+}
+.hamburger-btn:active{transform:scale(.92);}
+
+/* ===== Sidebar ===== */
+.sidebar-overlay{position:fixed; inset:0; background:rgba(10,6,2,.62); z-index:60; display:none; backdrop-filter:blur(1px);}
+.sidebar-overlay.open{display:block; animation:fadeIn .2s ease;}
+.sidebar{
+  position:fixed; top:0; right:0; height:100%; width:82%; max-width:300px; z-index:70;
+  background:linear-gradient(165deg, var(--bg-soft), var(--bg)); border-left:1px solid var(--line);
+  transform:translateX(100%); transition:transform .32s cubic-bezier(.2,.9,.3,1);
+  padding:18px 14px 22px; overflow-y:auto;
+}
+.sidebar.open{transform:translateX(0);}
+.sidebar-head{display:flex; align-items:center; gap:10px; padding-bottom:14px; margin-bottom:14px; border-bottom:1px solid var(--line-soft);}
+.sidebar-head .sh-info{flex:1;}
+.sidebar-nav{display:flex; flex-direction:column; gap:3px;}
+.side-link{
+  display:flex; align-items:center; gap:10px; width:100%; text-align:right; padding:13px 12px;
+  border-radius:11px; font-size:14.5px; color:var(--ink-dim); transition:background .2s, color .2s, transform .1s;
+}
+.side-link.active{background:var(--gold); color:#1c1305; font-weight:700;}
+.side-link:active{transform:scale(.98);}
+.sidebar-foot{margin-top:16px; padding-top:14px; border-top:1px solid var(--line-soft); font-size:10.5px; color:var(--muted); text-align:center;}
+.brand-mark{
+  width:38px; height:38px; border-radius:50%; border:1.5px solid var(--gold);
+  display:flex; align-items:center; justify-content:center; font-size:18px; flex:0 0 auto;
+  box-shadow:0 0 14px var(--gold-glow), inset 0 0 8px var(--gold-glow);
+}
+.brand-name{font-size:19px; font-weight:700; color:var(--gold-bright);}
+.brand-sub{font-size:10.5px; color:var(--muted); margin-top:-2px;}
+.nav-tabs{display:flex; gap:6px; overflow-x:auto; padding:0 12px 10px; scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.nav-tab{
+  flex:0 0 auto; font-size:12.5px; padding:8px 13px; border-radius:999px;
+  background:var(--bg-card); border:1px solid var(--line); color:var(--muted);
+  display:flex; align-items:center; gap:5px; white-space:nowrap;
+  transition:background .25s, color .25s, border-color .25s, transform .15s;
+}
+.nav-tab.active{background:var(--gold); color:#1c1305; border-color:var(--gold); font-weight:700;}
+.nav-tab:active{transform:scale(.96);}
+
+/* ===== Layout ===== */
+main{max-width:620px; margin:0 auto; padding:18px 16px 30px;}
+.view{display:none;}
+.view.active{display:block; animation:viewIn .38s ease both;}
+@keyframes viewIn{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .55s ease, transform .55s ease;}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+/* ===== Hero (home) ===== */
+.hero{
+  text-align:center; padding:28px 10px 20px; position:relative; overflow:hidden;
+  border-radius:var(--radius-l); background:linear-gradient(160deg, var(--bg-card), var(--bg-soft));
+  border:1px solid var(--line-soft); margin-bottom:18px;
+}
+.hero .steam{position:absolute; inset:0; pointer-events:none; opacity:.5;}
+.hero .steam span{
+  position:absolute; bottom:0; width:2px; background:linear-gradient(to top, var(--gold-glow), transparent);
+  animation:rise 5s ease-in infinite;
+}
+.hero .steam span:nth-child(1){left:30%; height:60px; animation-delay:0s;}
+.hero .steam span:nth-child(2){left:50%; height:80px; animation-delay:1.4s;}
+.hero .steam span:nth-child(3){left:68%; height:50px; animation-delay:2.6s;}
+@keyframes rise{
+  0%{transform:translateY(0) scaleX(1); opacity:0;}
+  15%{opacity:.6;}
+  100%{transform:translateY(-90px) scaleX(2.4); opacity:0;}
+}
+.hero-emblem{
+  width:64px; height:64px; margin:0 auto 12px; border-radius:50%; border:1.5px solid var(--gold);
+  display:flex; align-items:center; justify-content:center; font-size:28px; position:relative; z-index:1;
+  box-shadow:0 0 22px var(--gold-glow), inset 0 0 12px var(--gold-glow);
+}
+.hero h1{font-size:27px; color:var(--ink); position:relative; z-index:1;}
+.hero .tagline{color:var(--gold-bright); font-size:13.5px; margin:6px 0 18px; position:relative; z-index:1;}
+.hero-actions{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; position:relative; z-index:1;}
+.btn{
+  padding:11px 20px; border-radius:999px; font-size:13.5px; font-weight:700;
+  display:inline-flex; align-items:center; gap:6px; transition:transform .15s, filter .2s;
+}
+.btn:active{transform:scale(.96);}
+.btn.gold{background:linear-gradient(135deg, var(--gold-bright), var(--gold)); color:#1c1305;}
+.btn.ghost{border:1px solid var(--line); background:var(--bg-raised); color:var(--ink);}
+.btn.whatsapp{background:var(--whatsapp); color:#0e2113;}
+.btn.paprika{background:linear-gradient(135deg, var(--paprika-bright), var(--paprika)); color:#2a0c04;}
+.btn.sage{background:linear-gradient(135deg, var(--sage-bright), var(--sage)); color:#16200a;}
+.btn.rose{background:linear-gradient(135deg, var(--rose-bright), var(--rose)); color:#2a0d13;}
+.btn.small{padding:7px 13px; font-size:12px;}
+.btn.block{width:100%; justify-content:center;}
+.btn.outline-danger{border:1px solid var(--paprika); color:var(--paprika-bright); background:transparent;}
+.btn:disabled{opacity:.45; pointer-events:none;}
+
+.stat-grid{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
+.stat-chip{
+  flex:1; min-width:100px; background:var(--bg-card); border:1px solid var(--line-soft);
+  border-radius:var(--radius-m); padding:12px 10px; text-align:center;
+}
+.stat-chip b{display:block; font-size:20px; color:var(--gold-bright); font-family:'El Messiri',serif;}
+.stat-chip span{font-size:11px; color:var(--muted);}
+
+.quick-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px;}
+.quick-card{
+  background:var(--bg-card); border:1px solid var(--line-soft); border-radius:var(--radius-m);
+  padding:16px 12px; text-align:center; transition:border-color .25s, transform .15s;
+}
+.quick-card:active{transform:scale(.97);}
+.quick-card .ic{font-size:24px; margin-bottom:6px; display:block;}
+.quick-card .lbl{font-size:13px; font-weight:700;}
+.quick-card .sub{font-size:10.5px; color:var(--muted); margin-top:2px;}
+
+.section-title{display:flex; align-items:center; justify-content:space-between; margin:4px 0 12px;}
+.section-title h2{font-size:18px; color:var(--gold-bright);}
+.section-title .hint{font-size:11.5px; color:var(--muted);}
+.section-note{
+  font-size:12px; color:var(--ink-dim); background:var(--bg-card); border:1px solid var(--line-soft);
+  border-radius:var(--radius-s); padding:10px 12px; margin-bottom:14px; border-right:3px solid var(--gold);
+}
+
+/* ===== Settings box ===== */
+.settings-box{background:var(--bg-card); border:1px solid var(--line-soft); border-radius:var(--radius-m); padding:14px; margin-bottom:18px;}
+.settings-box summary{cursor:pointer; font-size:13.5px; font-weight:700; color:var(--gold-bright); list-style:none; display:flex; align-items:center; gap:6px;}
+.settings-box summary::-webkit-details-marker{display:none;}
+.field-grid{display:grid; gap:10px; margin-top:12px;}
+.field label{display:block; font-size:11.5px; color:var(--muted); margin-bottom:4px;}
+
+/* ===== Search / tabs ===== */
+.search-wrap{position:sticky; top:60px; z-index:20; background:var(--bg); padding:2px 0 10px;}
+.searchbox{width:100%;}
+.chip-row{display:flex; gap:6px; overflow-x:auto; padding:10px 0 2px; scrollbar-width:none;}
+.chip-row::-webkit-scrollbar{display:none;}
+.chip{
+  flex:0 0 auto; font-size:12px; padding:7px 13px; border-radius:999px; background:var(--bg-card);
+  border:1px solid var(--line); color:var(--muted); white-space:nowrap; transition:.2s;
+}
+.chip.active{background:var(--gold); color:#1c1305; border-color:var(--gold); font-weight:700;}
+
+/* ===== Product / item cards ===== */
+.item-card{
+  background:var(--bg-card); border:1px solid var(--line-soft); border-radius:var(--radius-m);
+  padding:14px; margin-bottom:10px; transition:border-color .25s, transform .18s;
+}
+.item-card:hover{border-color:var(--gold);}
+.item-top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:8px;}
+.item-name{font-size:15px; font-weight:700;}
+.item-meta{font-size:11px; color:var(--muted); margin-top:2px;}
+.item-icons{display:flex; gap:6px; flex:0 0 auto;}
+.icon-btn{width:28px; height:28px; border-radius:8px; background:var(--bg-raised); display:flex; align-items:center; justify-content:center; font-size:13px; border:1px solid var(--line-soft);}
+.weight-row{display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-top:8px;}
+.wchip{
+  font-size:12px; padding:6px 12px; border-radius:8px; background:var(--bg-raised); border:1px solid var(--line);
+  color:var(--ink-dim); transition:.2s;
+}
+.wchip.sel{background:var(--gold); color:#1c1305; border-color:var(--gold); font-weight:700;}
+.wcustom{max-width:110px; font-size:12.5px; padding:6px 10px;}
+.item-actions{display:flex; gap:8px; margin-top:10px;}
+
+.emptystate{text-align:center; color:var(--muted); padding:34px 10px; font-size:13.5px;}
+.emptystate .ic{font-size:30px; display:block; margin-bottom:8px;}
+
+/* ===== Warehouse rows ===== */
+.wh-row{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:var(--bg-card); border-right:3px solid var(--gold); border-radius:var(--radius-s);
+  padding:11px 13px; margin-bottom:8px;
+}
+.wh-row.low{border-right-color:var(--paprika);}
+.wh-name{font-size:14.5px; font-weight:700;}
+.wh-meta{font-size:10.5px; color:var(--muted); margin-top:2px; display:flex; gap:6px; flex-wrap:wrap;}
+.badge{font-size:9.5px; padding:2px 7px; border-radius:999px; background:var(--bg-raised); color:var(--muted); border:1px solid var(--line);}
+.wh-qty{font-family:'El Messiri',serif; font-weight:700; color:var(--gold-bright); font-size:15px; white-space:nowrap;}
+.wh-actions{display:flex; gap:5px;}
+
+/* ===== Suppliers ===== */
+.supplier-pill{
+  display:flex; align-items:center; gap:6px; padding:9px 14px; border-radius:999px;
+  background:var(--bg-card); border:1px solid var(--line); font-size:13px; transition:.2s;
+}
+.supplier-pill.active{background:var(--paprika); border-color:var(--paprika); color:#fff0e8; font-weight:700;}
+
+.order-line{
+  display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap;
+  background:var(--bg-raised); border:1px solid var(--line-soft); border-radius:var(--radius-s);
+  padding:9px 12px; margin-bottom:6px; font-size:13.5px;
+}
+.order-line .qty-input{width:60px; text-align:center; padding:5px 4px; font-size:13px;}
+
+/* ===== Quick-fill quantity chips ===== */
+.qchip-row{display:flex; gap:5px; flex-wrap:wrap; flex-basis:100%; margin-top:1px;}
+.qchip{
+  font-size:11px; padding:5px 11px; border-radius:999px; background:var(--bg-card);
+  border:1px solid var(--line); color:var(--ink-dim); font-weight:700; transition:transform .12s, background .15s, color .15s, border-color .15s;
+  white-space:nowrap;
+}
+.qchip:active{transform:scale(.92); background:var(--gold); color:#1c1305; border-color:var(--gold);}
+
+/* ===== Floating quick-order button ===== */
+.quick-order-fab{
+  position:fixed; left:50%; bottom:calc(78px + 14px); transform:translateX(-50%) translateY(0);
+  z-index:55; display:none; align-items:center; gap:9px;
+  background:linear-gradient(135deg, #63d48d, var(--whatsapp)); color:#0e2113;
+  font-weight:800; font-size:13.5px; padding:13px 20px; border-radius:999px;
+  box-shadow:0 10px 26px rgba(74,169,108,.45), 0 2px 8px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.18);
+}
+.quick-order-fab.show{display:inline-flex; animation:fabPop .25s ease;}
+.quick-order-fab:active{transform:translateX(-50%) scale(.95);}
+@keyframes fabPop{from{opacity:0; transform:translateX(-50%) translateY(16px) scale(.9);} to{opacity:1; transform:translateX(-50%) translateY(0) scale(1);}}
+.qof-badge{
+  background:#0e2113; color:#baf0cc; font-size:11.5px; font-weight:800; min-width:20px; height:20px;
+  border-radius:999px; display:flex; align-items:center; justify-content:center; padding:0 5px;
+}
+
+.draft-box{
+  background:var(--bg-card); border:1px dashed var(--paprika); border-radius:var(--radius-m); padding:14px; margin-top:16px;
+}
+
+/* ===== Blend cards ===== */
+.blend-card{
+  background:var(--bg-card); border:1px solid var(--line-soft); border-top:3px solid var(--sage);
+  border-radius:0 0 var(--radius-m) var(--radius-m); padding:14px; margin-bottom:12px;
+}
+.blend-card h3{color:var(--sage-bright); font-size:16px; margin-bottom:8px;}
+.ing-row{display:flex; justify-content:space-between; font-size:13px; padding:5px 0; border-bottom:1px solid var(--line-soft);}
+.ing-row:last-child{border-bottom:none;}
+.blend-notes{font-size:12px; color:var(--ink-dim); margin-top:8px; white-space:pre-wrap;}
+
+/* ===== Extras (rose) ===== */
+.extra-row{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:var(--bg-card); border-right:3px solid var(--rose); border-radius:var(--radius-s);
+  padding:11px 13px; margin-bottom:8px;
+}
+
+/* ===== Sync / QR ===== */
+.sync-tabs{display:flex; gap:8px; margin-bottom:14px;}
+.sync-tab{flex:1; text-align:center; padding:10px; border-radius:var(--radius-s); background:var(--bg-card); border:1px solid var(--line); font-size:13px;}
+.sync-tab.active{background:var(--gold); color:#1c1305; font-weight:700; border-color:var(--gold);}
+#qrHolder{background:#fff; padding:16px; border-radius:var(--radius-m); display:flex; align-items:center; justify-content:center; margin:14px auto; width:fit-content;}
+#qrHolder img, #qrHolder canvas{display:block;}
+.check-list{display:flex; flex-direction:column; gap:8px; margin:12px 0;}
+.check-item{display:flex; align-items:center; gap:8px; font-size:13.5px;}
+#scanVideo{width:100%; border-radius:var(--radius-m); border:1px solid var(--line); margin:12px 0; display:none;}
+.scan-result{background:var(--bg-card); border:1px solid var(--gold); border-radius:var(--radius-m); padding:12px; margin-top:12px; font-size:13px; display:none;}
+
+/* ===== Modal ===== */
+.modal-overlay{
+  position:fixed; inset:0; background:rgba(10,6,2,.72); z-index:100; display:none;
+  align-items:flex-end; justify-content:center; backdrop-filter:blur(2px);
+}
+.modal-overlay.open{display:flex; animation:fadeIn .2s ease;}
+@keyframes fadeIn{from{opacity:0;} to{opacity:1;}}
+.modal-box{
+  background:var(--bg-soft); border:1px solid var(--line); border-radius:20px 20px 0 0;
+  width:100%; max-width:620px; max-height:88vh; overflow-y:auto; padding:20px 18px 26px;
+  animation:slideUp .3s cubic-bezier(.2,.9,.3,1);
+}
+@keyframes slideUp{from{transform:translateY(40px); opacity:0;} to{transform:translateY(0); opacity:1;}}
+.modal-title{font-size:17px; font-weight:700; color:var(--gold-bright); margin-bottom:14px;}
+.modal-actions{display:flex; gap:10px; margin-top:16px;}
+
+/* ===== Footer float bar ===== */
+.float-bar{position:fixed; bottom:0; left:0; right:0; display:flex; background:var(--bg-soft); border-top:1px solid var(--line-soft); z-index:50;}
+.float-bar a{flex:1; text-align:center; padding:13px 0; font-size:12.5px; font-weight:700;}
+.float-bar a.wa{color:#7ddc9d; border-left:1px solid var(--line-soft);}
+.float-bar a.call{color:var(--gold-bright);}
+
+.toast{
+  position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(20px); opacity:0;
+  background:var(--gold); color:#1c1305; padding:10px 20px; border-radius:999px; font-size:13px; font-weight:700;
+  z-index:200; transition:opacity .3s, transform .3s; pointer-events:none; white-space:nowrap;
+}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+footer.credit{text-align:center; padding:22px 16px 10px; font-size:11px; color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand-row">
+    <div class="brand-left">
+      <div class="brand-mark">🏺</div>
+      <div>
+        <div class="brand-name">الأسواني</div>
+        <div class="brand-sub">عطارة وتوابل أصيلة</div>
+      </div>
+    </div>
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="القائمة">☰</button>
+  </div>
+</header>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-head">
+    <div class="brand-mark">🏺</div>
+    <div class="sh-info">
+      <div class="brand-name" style="font-size:16px;">الأسواني</div>
+      <div class="brand-sub">القائمة الرئيسية</div>
+    </div>
+    <button class="icon-btn" id="closeSidebarBtn">✕</button>
+  </div>
+  <nav class="sidebar-nav" id="sidebarNav">
+    <button class="side-link" data-tab="home">🏠 الرئيسية</button>
+    <button class="side-link" data-tab="warehouse">📦 المخزن الرئيسي (رسلان)</button>
+    <button class="side-link" data-tab="orders">🧾 التجار والموردين والطلبيات</button>
+    <button class="side-link" data-tab="catalog">🌿 الأصناف (أصناف المحل)</button>
+    <button class="side-link" data-tab="extras">🌹 الورد ومستلزماته</button>
+    <button class="side-link" data-tab="blends">🧪 خلطات الأعشاب</button>
+    <button class="side-link" data-tab="sync">🔄 مزامنة QR</button>
+  </nav>
+  <div class="sidebar-foot">الأسواني — عطارة وتوابل أصيلة</div>
+</aside>
+
+<main>
+
+  <!-- ===== HOME ===== -->
+  <section class="view" id="view-home">
+    <div class="hero">
+      <div class="steam"><span></span><span></span><span></span></div>
+      <div class="hero-emblem">🏺</div>
+      <h1>الأسواني</h1>
+      <div class="tagline">عطارة أصيلة… بلمسة العصر</div>
+      <div class="hero-actions">
+        <a class="btn gold" id="homeCallBtn" href="tel:">📞 اتصل بالمحل</a>
+        <a class="btn whatsapp" id="homeWaBtn" href="https://wa.me/" target="_blank" rel="noopener">💬 واتساب المحل</a>
+      </div>
+    </div>
+
+    <details class="settings-box reveal">
+      <summary>⚙️ بيانات المحل (الاسم، التليفون، الواتساب)</summary>
+      <div class="field-grid" id="shopInfoForm">
+        <div class="field"><label>اسم المحل</label><input id="siName" placeholder="الأسواني"></div>
+        <div class="field"><label>رقم التليفون (للاتصال المباشر)</label><input id="siPhone" placeholder="01xxxxxxxxx" dir="ltr"></div>
+        <div class="field"><label>رقم الواتساب</label><input id="siWa" placeholder="01xxxxxxxxx" dir="ltr"></div>
+        <div class="field"><label>العنوان</label><input id="siAddr" placeholder="العنوان بالتفصيل"></div>
+        <button class="btn gold block" id="saveShopInfo">💾 حفظ بيانات المحل</button>
+      </div>
+    </details>
+
+    <div class="stat-grid reveal">
+      <div class="stat-chip"><b id="statCatalog">0</b><span>صنف بالمحل</span></div>
+      <div class="stat-chip"><b id="statWarehouse">0</b><span>صنف بالمخزن</span></div>
+      <div class="stat-chip"><b id="statSuppliers">0</b><span>تاجر ومورد</span></div>
+      <div class="stat-chip"><b id="statBlends">0</b><span>خلطة محفوظة</span></div>
+    </div>
+
+    <div class="section-title reveal"><h2>الوصول السريع</h2></div>
+    <div class="quick-grid reveal">
+      <button class="quick-card" data-goto="catalog"><span class="ic">🌿</span><span class="lbl">أصناف المحل</span><span class="sub">بحث وأوزان</span></button>
+      <button class="quick-card" data-goto="warehouse"><span class="ic">📦</span><span class="lbl">المخزن الرئيسي</span><span class="sub">قلب النظام</span></button>
+      <button class="quick-card" data-goto="orders"><span class="ic">🧾</span><span class="lbl">طلبية جديدة</span><span class="sub">إرسال واتساب</span></button>
+      <button class="quick-card" data-goto="sync"><span class="ic">🔄</span><span class="lbl">مزامنة QR</span><span class="sub">مشاركة سريعة</span></button>
+    </div>
+
+    <div class="section-note reveal">📦 قسم <b>المخزن (رسلان)</b> هو المرجع الشامل لكل بضاعة المحل — أي طلبية تتأكد، أو أي ملف PDF يتم استيراده، بينزل فيه أوتوماتيك عشان محدش ينسى صنف.</div>
+  </section>
+
+  <!-- ===== CATALOG ===== -->
+  <section class="view" id="view-catalog">
+    <div class="section-title"><h2>🌿 أصناف المحل</h2><span class="hint" id="catalogCount"></span></div>
+    <div class="search-wrap">
+      <input class="searchbox" id="catalogSearch" placeholder="🔍 دور على أي صنف... كمون، فلفل، عدس، مكرونة">
+      <div class="chip-row" id="catalogCats"></div>
+    </div>
+    <button class="btn ghost block" id="addCatalogItemBtn" style="margin-bottom:14px;">➕ إضافة صنف جديد للمحل</button>
+    <div id="catalogList"></div>
+  </section>
+
+  <!-- ===== WAREHOUSE ===== -->
+  <section class="view" id="view-warehouse">
+    <div class="section-title"><h2>📦 المخزن (رسلان)</h2><span class="hint" id="whCount"></span></div>
+    <div class="section-note">هنا كل البضاعة المتوفرة فعليًا بالمحل — يتحدث تلقائيًا من الطلبيات المؤكدة وملفات الـ PDF، وتقدر كمان تضيف وتعدّل يدويًا في أي وقت.</div>
+    <div class="search-wrap" style="top:0;">
+      <input class="searchbox" id="whSearch" placeholder="🔍 دور في المخزن...">
+    </div>
+    <div style="display:flex; gap:8px; margin:10px 0 14px; flex-wrap:wrap;">
+      <button class="btn gold small" id="addWhItemBtn">➕ إضافة صنف يدويًا</button>
+      <button class="btn ghost small" id="importPdfBtn">📄 استيراد من PDF</button>
+      <button class="btn ghost small" id="whSortLow">⚠️ الأقل رصيدًا أولاً</button>
+    </div>
+    <input type="file" id="pdfFileInput" accept="application/pdf" style="display:none;">
+    <div id="pdfPreviewBox" style="display:none; background:var(--bg-card); border:1px solid var(--gold); border-radius:var(--radius-m); padding:14px; margin-bottom:16px;">
+      <div class="modal-title" style="font-size:14px;">📄 راجع الأصناف المستخرجة من الملف قبل الإضافة</div>
+      <div id="pdfPreviewList" style="max-height:260px; overflow-y:auto;"></div>
+      <div class="modal-actions">
+        <button class="btn gold" id="pdfConfirmBtn" style="flex:1;">✅ إضافة المحدد للمخزن</button>
+        <button class="btn ghost" id="pdfCancelBtn">إلغاء</button>
+      </div>
+    </div>
+    <div id="warehouseList"></div>
+  </section>
+
+  <!-- ===== ORDERS & SUPPLIERS ===== -->
+  <section class="view" id="view-orders">
+    <div class="section-title"><h2>🧾 الطلبيات والموردين</h2></div>
+    <div class="section-note">اختار التاجر، حدد الأصناف والكميات، وابعت الطلبية على الواتساب دون أي أسعار. لما توصل الطلبية، اعتمدها عشان تتحدث في المخزن أوتوماتيك.</div>
+
+    <div class="chip-row" id="supplierPills" style="padding-bottom:10px;"></div>
+    <button class="btn ghost small" id="addSupplierBtn" style="margin-bottom:16px;">➕ إضافة تاجر جديد</button>
+
+    <div id="supplierPickerArea"></div>
+
+    <div class="draft-box" id="draftBox">
+      <div class="section-title" style="margin-bottom:8px;"><h2 style="font-size:14.5px;">🛒 الطلبية الحالية</h2><span class="hint" id="draftCount">0 صنف</span></div>
+      <div id="draftList"><div class="emptystate">لسه مفيش أصناف في الطلبية</div></div>
+      <button class="btn whatsapp block" id="sendOrderWaBtn" style="margin-top:12px;">💬 إرسال الطلبية للتاجر عبر واتساب</button>
+      <div class="hint" style="font-size:10.5px; color:var(--muted); text-align:center; margin-top:6px;">بمجرد الإرسال، الأصناف والكميات بتتسجل في المخزن الرئيسي أوتوماتيك ⚡</div>
+      <button class="btn outline-danger small block" id="clearDraftBtn" style="margin-top:8px;">🗑️ تفريغ الطلبية</button>
+    </div>
+  </section>
+
+  <!-- ===== EXTRAS (rose) ===== -->
+  <section class="view" id="view-extras">
+    <div class="section-title"><h2>🌹 الورد ومستلزماته</h2><span class="hint" id="extrasCount"></span></div>
+    <div class="section-note">قسم منفصل للأصناف الإضافية زي الورد ومستلزماته — كميات فقط، بدون أسعار.</div>
+    <button class="btn rose block" id="addExtraBtn" style="margin-bottom:14px;">➕ إضافة صنف جديد</button>
+    <div id="extrasList"></div>
+  </section>
+
+  <!-- ===== BLENDS ===== -->
+  <section class="view" id="view-blends">
+    <div class="section-title"><h2>🧪 خلطات الأعشاب</h2><span class="hint" id="blendsCount"></span></div>
+    <div class="section-note">مرجع دائم لمقادير كل خلطة — وتقدر "تحضّر" الخلطة فتتخصم مكوناتها من المخزون أوتوماتيك.</div>
+    <button class="btn sage block" id="addBlendBtn" style="margin-bottom:14px;">➕ إضافة خلطة جديدة</button>
+    <div id="blendsList"></div>
+  </section>
+
+  <!-- ===== SYNC QR ===== -->
+  <section class="view" id="view-sync">
+    <div class="section-title"><h2>🔄 مزامنة عبر QR</h2></div>
+    <div class="section-note">شارك بيانات المحل مع شريك أو مساعد بمسح كود واحد من الكاميرا — من غير إنترنت أو حسابات.</div>
+    <div class="sync-tabs">
+      <button class="sync-tab active" data-sync="gen">📤 توليد كود</button>
+      <button class="sync-tab" data-sync="scan">📷 مسح كود</button>
+    </div>
+
+    <div id="syncGen">
+      <div class="check-list">
+        <label class="check-item"><input type="checkbox" id="incWarehouse" checked> المخزن (رسلان)</label>
+        <label class="check-item"><input type="checkbox" id="incExtras" checked> الورد ومستلزماته</label>
+        <label class="check-item"><input type="checkbox" id="incBlends" checked> خلطات الأعشاب</label>
+        <label class="check-item"><input type="checkbox" id="incCatalog"> أصناف المحل</label>
+      </div>
+      <button class="btn gold block" id="genQrBtn">🔳 توليد كود QR</button>
+      <div id="qrHolder" style="display:none;"></div>
+      <div id="qrTooBig" class="section-note" style="display:none; border-color:var(--paprika);"></div>
+    </div>
+
+    <div id="syncScan" style="display:none;">
+      <button class="btn paprika block" id="startScanBtn">📷 تشغيل الكاميرا ومسح الكود</button>
+      <video id="scanVideo" playsinline></video>
+      <canvas id="scanCanvas" style="display:none;"></canvas>
+      <div class="scan-result" id="scanResultBox"></div>
+    </div>
+  </section>
+
+</main>
+
+<div class="float-bar">
+  <a class="wa" id="floatWaBtn" href="https://wa.me/" target="_blank" rel="noopener">💬 واتساب</a>
+  <a class="call" id="floatCallBtn" href="tel:">📞 اتصال</a>
+</div>
+
+<button class="quick-order-fab" id="quickOrderFab" type="button">
+  <span>💬 إرسال الطلبية</span>
+  <span class="qof-badge" id="quickOrderBadge">0</span>
+</button>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-title" id="modalTitle"></div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script id="raslan-data" type="application/json">{"توابل وأعشاب 🌶️": [{"name": "فلفل برازيلي", "unit": "كيلو"}, {"name": "فلفل ناعم", "unit": "كيلو"}, {"name": "كمون حصى", "unit": "كيلو"}, {"name": "كمون ناعم", "unit": "كيلو"}, {"name": "كزبرة بلدي", "unit": "كيلو"}, {"name": "كزبرة سوري", "unit": "كيلو"}, {"name": "كزبرة ناعمة", "unit": "كيلو"}, {"name": "شطة قرون", "unit": "كيلو"}, {"name": "شطة نمرة 1", "unit": "كيلو"}, {"name": "شطة صحراوي", "unit": "كيلو"}, {"name": "ثوم بودر", "unit": "كيلو"}, {"name": "بصل بودر", "unit": "كيلو"}, {"name": "حبهان وسط/أخضر", "unit": "كيلو"}, {"name": "حبهان جامبو", "unit": "كيلو"}, {"name": "حبهان ناعم", "unit": "كيلو"}, {"name": "كركم ناعم/حصى", "unit": "كيلو"}, {"name": "زعتر سوري", "unit": "كيلو"}, {"name": "زعتر عرايش", "unit": "كيلو"}, {"name": "ورق لوري", "unit": "كيلو"}, {"name": "فلفل أبيض", "unit": "كيلو"}, {"name": "سماق", "unit": "كيلو"}, {"name": "قرنفل", "unit": "كيلو"}, {"name": "ملح صيني", "unit": "كيلو"}, {"name": "كبابة صينية", "unit": "كيلو"}, {"name": "عصفر بلدي", "unit": "كيلو"}, {"name": "عصفر عادة", "unit": "كيلو"}, {"name": "عود قرنفل", "unit": "كيلو"}, {"name": "ليمون ناشف", "unit": "كيلو"}, {"name": "قرفة خشب", "unit": "كيلو"}, {"name": "قرفة سيجار", "unit": "كيلو"}, {"name": "جوزة الطيب", "unit": "كيلو"}, {"name": "بابريكا", "unit": "كيلو"}, {"name": "بهارات لحوم", "unit": "كيلو"}, {"name": "بهارات عادة", "unit": "كيلو"}, {"name": "بهارات فراخ", "unit": "كيلو"}, {"name": "بهارات سمك", "unit": "كيلو"}, {"name": "قرفة ناعمة", "unit": "كيلو"}, {"name": "جنزبيل ناعم/حصى", "unit": "كيلو"}, {"name": "شوفان سايب", "unit": "كيلو"}, {"name": "خلنجان", "unit": "كيلو"}, {"name": "فيجيتار بارد", "unit": "شكارة"}, {"name": "فيجيتار حار", "unit": "شكارة"}, {"name": "كاري", "unit": "كيلو"}, {"name": "مغات", "unit": "كيلو"}, {"name": "حلبة مغات", "unit": "كيلو"}, {"name": "حلبة ناعمة", "unit": "كيلو"}, {"name": "أعشاب تخسيس", "unit": "كيلو"}, {"name": "تركيب زيادة وزن", "unit": "كيلو"}, {"name": "ينسون", "unit": "كيلو"}, {"name": "حبة البركة", "unit": "كيلو"}, {"name": "شمر", "unit": "كيلو"}, {"name": "كراوية", "unit": "كيلو"}, {"name": "زهرة البابونج", "unit": "كيلو"}, {"name": "جنين القمح", "unit": "كيلو"}, {"name": "حصى لبان روز ماري", "unit": "كيلو"}, {"name": "شبه حصى", "unit": "كيلو"}, {"name": "بابريكا مدخنة", "unit": "كيلو"}, {"name": "مستكة صينية", "unit": "كيلو"}, {"name": "كزبرة نص دشة", "unit": "كيلو"}, {"name": "بصل قشر", "unit": "كيلو"}, {"name": "مغات حصى", "unit": "كيلو"}, {"name": "ملح خشن", "unit": "كيلو"}, {"name": "طمي مغربي", "unit": "كيلو"}, {"name": "لبان دكر", "unit": "كيلو"}, {"name": "ورق نعناع", "unit": "كيلو"}, {"name": "ورق جوافة", "unit": "كيلو"}, {"name": "ورق سدر", "unit": "كيلو"}, {"name": "سالمكة", "unit": "كيلو"}, {"name": "تليو", "unit": "كيلو"}, {"name": "حلبة حصى", "unit": "كيلو"}, {"name": "بردقوش", "unit": "كيلو"}, {"name": "حلفا بر", "unit": "كيلو"}, {"name": "زر الورد", "unit": "كيلو"}, {"name": "قشر رمان", "unit": "كيلو"}, {"name": "مرمرية", "unit": "كيلو"}, {"name": "شيح بلدي", "unit": "كيلو"}, {"name": "شعير", "unit": "كيلو"}, {"name": "كركديه نيجيري لوزة", "unit": "كيلو"}, {"name": "كركديه لوزة", "unit": "كيلو"}, {"name": "دوم مجروش", "unit": "كيلو"}, {"name": "صمغ عربي", "unit": "كيلو"}, {"name": "عرق حلاوة", "unit": "كيلو"}, {"name": "دنكار", "unit": "كيلو"}, {"name": "شبة ناعمة", "unit": "كيلو"}, {"name": "رجل الأسد", "unit": "كيلو"}, {"name": "حناء أسواني", "unit": "كيلو"}, {"name": "سليوم (إسباغول)", "unit": "كيلو"}, {"name": "ينسون نجمة", "unit": "كيلو"}, {"name": "قرض", "unit": "كيلو"}, {"name": "عين عفريت", "unit": "كيلو"}, {"name": "بخور جاوي", "unit": "كيلو"}, {"name": "قسط هندي", "unit": "كيلو"}, {"name": "ملح هيمالايا", "unit": "كيلو"}, {"name": "محلب (كريزي/سوري)", "unit": "كيلو"}, {"name": "ورق مورنجا", "unit": "كيلو"}, {"name": "ورق زيتون", "unit": "كيلو"}, {"name": "حرجل", "unit": "كيلو"}, {"name": "عرقسوس", "unit": "كيلو"}, {"name": "خروب مجروش", "unit": "كيلو"}, {"name": "حب العزيز", "unit": "كيلو"}, {"name": "ملوخية ناشفة", "unit": "كيلو"}, {"name": "مر بطارخ", "unit": "كيلو"}, {"name": "قهوة خضراء", "unit": "كيلو"}, {"name": "أشواجندا", "unit": "كيلو"}, {"name": "جينسنج", "unit": "كيلو"}, {"name": "زهرة زرقاء", "unit": "كيلو"}], "البذور 🌱": [{"name": "بذر كتان", "unit": "كيلو"}, {"name": "بذر فاتونة", "unit": "كيلو"}, {"name": "بذر الشيا", "unit": "كيلو"}, {"name": "بذر حب الرشاد", "unit": "كيلو"}, {"name": "بذر الخردل", "unit": "كيلو"}, {"name": "بذر ملوخية", "unit": "كيلو"}, {"name": "بذر كنوة", "unit": "كيلو"}, {"name": "بذر مورنجا", "unit": "كيلو"}, {"name": "بذر رجلة", "unit": "كيلو"}, {"name": "بذر شبت", "unit": "كيلو"}, {"name": "بذر فجل", "unit": "كيلو"}, {"name": "بذر حرمل", "unit": "كيلو"}, {"name": "بذر بقدونس", "unit": "كيلو"}, {"name": "بذر كرفس", "unit": "كيلو"}], "خامات الحلواني 🍰": [{"name": "خلطة كنتاكي", "unit": "كيلو"}, {"name": "فول صويا مجروش", "unit": "كيلو"}, {"name": "سحلب", "unit": "دستة"}, {"name": "عجوة مفرومة", "unit": "كرتونة"}, {"name": "سمسم محمص", "unit": "كيلو"}, {"name": "سمسم أبيض هندي", "unit": "كيلو"}, {"name": "فول سوداني", "unit": "كيلو"}, {"name": "كاكاو ماليزي/أندونيسي", "unit": "كيلو"}, {"name": "كاكاو إسباني", "unit": "كيلو"}, {"name": "زبيب مصري", "unit": "كيلو"}, {"name": "زبيب مادة", "unit": "كيلو"}, {"name": "جوز هند هندي", "unit": "كيلو"}, {"name": "كريم شانتيه خام", "unit": "كيلو"}, {"name": "كريم شانيه سكر (نيو ماركيز)", "unit": "كيلو"}, {"name": "فارمسيل", "unit": "كيلو"}, {"name": "خميرة فورية (أنجل)", "unit": "كرتونة"}, {"name": "شيكولاتة خام", "unit": "قالب"}, {"name": "شيكولاتة مطبخ", "unit": "كرتونة"}, {"name": "جيلاتين بودر", "unit": "كيلو"}, {"name": "ملح ليمون", "unit": "كيلو"}, {"name": "كربوناتو", "unit": "كيلو"}, {"name": "شيكولاتة ماكستيلا (1ك 250جم)", "unit": "كرتونة"}, {"name": "كريمة لباني", "unit": "كيلو"}, {"name": "ألوان جل غذائي", "unit": "دستة"}, {"name": "كورن فليكس (سادة/شيكولاتة/ألوان)", "unit": "حسب النوع"}, {"name": "فنكوش", "unit": "كيلو"}, {"name": "نشا", "unit": "كيلو"}, {"name": "نشادر", "unit": "كيلو"}, {"name": "دقيق سبونج", "unit": "كيلو"}, {"name": "لبن بودر كامل الدسم", "unit": "كيلو"}, {"name": "لبن بودر خالي الدسم", "unit": "كيلو"}, {"name": "سميد بسبوسة", "unit": "كيلو"}, {"name": "بقسمات ناعم", "unit": "شكارة"}, {"name": "عسل جلوكوز", "unit": "كرتونة"}, {"name": "شوكو بون", "unit": "جردل"}, {"name": "شيكولاتة كرسبي بني", "unit": "جردل"}, {"name": "شيكولاتة شيبس", "unit": "جردل"}, {"name": "شيكولاتة أحجار", "unit": "جردل"}, {"name": "كريمة ألفا", "unit": "كيلو"}, {"name": "لون طاطرا زين (بودرة زعفران)", "unit": "كيلو"}, {"name": "لون أحمر راسبيري", "unit": "كيلو"}, {"name": "لون بني شيكولاتة", "unit": "كيلو"}, {"name": "لون أبيض", "unit": "كيلو"}, {"name": "لون أصفر غروب الشمس", "unit": "كيلو"}, {"name": "شيكولاتة سما مطبخ (بني/أبيض/حليب)", "unit": "24 قطعة"}, {"name": "لبن بودر فونيرا", "unit": "كيلو"}, {"name": "فانيليا صيني صفيح", "unit": "صفيحة"}, {"name": "رائحة كحك", "unit": "كيلو"}, {"name": "ملبن", "unit": "كرتونة"}], "توابل شيفي ميكس 🧂": [{"name": "تتبيلة البرجر 4ك", "unit": "جردل"}, {"name": "تتبيلة الدجاج 4ك", "unit": "جردل"}, {"name": "تتبيلة السمك 4ك", "unit": "جردل"}, {"name": "تتبيلة الكفتة 4ك", "unit": "جردل"}, {"name": "تتبيلة اللحوم 4ك", "unit": "جردل"}, {"name": "تتبيلة شاورما اللحم 4ك", "unit": "جردل"}, {"name": "تتبيلة شاورما الدجاج 4ك", "unit": "جردل"}, {"name": "تتبيلة الشيش طاووق 4ك", "unit": "جردل"}, {"name": "تتبيلة الحواوشي 4ك", "unit": "جردل"}, {"name": "تتبيلة التكا", "unit": "جردل"}, {"name": "تتبيلة السجق الشرقي 4ك", "unit": "جردل"}, {"name": "تتبيلة السجق الاسكندراني 4ك", "unit": "جردل"}, {"name": "تتبيلة الكبدة 4ك", "unit": "جردل"}, {"name": "تتبيلة الفاهيتا 4ك", "unit": "جردل"}, {"name": "تتبيلة الثوم 4ك", "unit": "جردل"}, {"name": "تتبيلة الطماطم 4ك", "unit": "جردل"}, {"name": "توابل الدواجن 4ك", "unit": "جردل"}, {"name": "توابل الشواء 4ك", "unit": "جردل"}, {"name": "تتبيلة السلطة 4ك", "unit": "جردل"}, {"name": "فريتو بارد / حار 3ك", "unit": "جردل"}, {"name": "توابل الشرقي (بوم فريت) 4ك", "unit": "جردل"}, {"name": "بصل بودر 3ك", "unit": "جردل"}, {"name": "دقة الثوم 4ك", "unit": "جردل"}, {"name": "صوص الديمي جلاس 4ك", "unit": "جردل"}, {"name": "صوص الكاري الهندي 4ك", "unit": "جردل"}, {"name": "تسبيكة الطماطم 4ك", "unit": "جردل"}, {"name": "مرقة اللحم 5ك", "unit": "جردل"}, {"name": "مرقة الدجاج 5ك", "unit": "جردل"}, {"name": "مرقة اللحم الضاني 5ك", "unit": "جردل"}, {"name": "خلطة الأرز البرياني 5ك", "unit": "جردل"}, {"name": "خلطة الأرز الزعفران 5ك", "unit": "جردل"}, {"name": "خلطة الأرز الكبسة 5ك", "unit": "جردل"}, {"name": "خلطة الأرز المكسيكي 5ك", "unit": "جردل"}, {"name": "خلطة الأرز الصيادية", "unit": "جردل"}, {"name": "تتبيلة المحشي 3ك", "unit": "جردل"}, {"name": "السبع بهارات", "unit": "جردل"}, {"name": "طعم الطماطم 3ك", "unit": "جردل"}, {"name": "طعم الجبنة 3ك", "unit": "جردل"}, {"name": "طعم فورتشيز 3ك", "unit": "جردل"}, {"name": "طعم الشطة والليمون 3ك", "unit": "جردل"}, {"name": "طعم الفراخ / طعم البيتزا", "unit": "جردل"}, {"name": "طعم الكاتشب الحار / الحلو", "unit": "جردل"}, {"name": "طعم السجق / طعم الكباب", "unit": "جردل"}], "منتجات تجميل 💄": [{"name": "صابون نابلسي شاهين", "unit": "كرتونة"}, {"name": "حليب جوز هند", "unit": "دستة"}, {"name": "جل صبار (أخضر/شفاف)", "unit": "دستة"}, {"name": "كحل إثمد", "unit": "دستة"}, {"name": "جاز أبيض", "unit": "دستة"}, {"name": "صابون كركم", "unit": "دستة"}, {"name": "صابون غار", "unit": "دستة"}, {"name": "صابون فحم", "unit": "دستة"}, {"name": "حنة ظرف (أسود/بني/أحمر/كستنائي) 6 أكياس", "unit": "علبة"}, {"name": "حنة بيضاء", "unit": "دستة"}, {"name": "شبة حلاقة", "unit": "دستة"}, {"name": "صابون لبان دكر", "unit": "دستة"}, {"name": "ماء ورد تجميلي (أحمر)", "unit": "دستة"}, {"name": "كريم تخسيس بالجنزبيل", "unit": "دستة"}, {"name": "مسك طهارة", "unit": "دستة"}, {"name": "ليف مغربي", "unit": "دستة"}, {"name": "زيت ترشوب/أرجان", "unit": "دستة"}, {"name": "عود ملكي", "unit": "دستة"}, {"name": "زبدة شيا حواج", "unit": "دستة"}, {"name": "حنة رسم (جومانا)", "unit": "دستة"}, {"name": "سفوف أكياس", "unit": "دستة"}, {"name": "زيت النمل", "unit": "دستة"}, {"name": "زيت العرقسوس", "unit": "دستة"}, {"name": "ماء ورد العرب", "unit": "دستة"}, {"name": "سويت حرير", "unit": "دستة"}, {"name": "كريم كعب الغزال", "unit": "دستة"}, {"name": "قرمز (صبغة شعر)", "unit": "دستة"}, {"name": "حنة بغدادي", "unit": "كيلو"}, {"name": "صبغة حجر (معبأة، 50 عبوة)", "unit": "علبة"}, {"name": "سواك 20 قطعة", "unit": "علبة"}, {"name": "فحم سريع الاشتعال", "unit": "-"}, {"name": "حليب صويا", "unit": "دستة"}, {"name": "صابون مغربي", "unit": "دستة"}, {"name": "كريم تفتيح البشرة", "unit": "دستة"}, {"name": "ورق رسم حنة", "unit": "دستة"}, {"name": "محلبية", "unit": "دستة"}, {"name": "سرتية", "unit": "دستة"}, {"name": "نخاع أنثى الجمل", "unit": "دستة"}, {"name": "قشطة الأميرات", "unit": "دستة"}, {"name": "كريم تكبير (ثدي/أرداف)", "unit": "دستة"}, {"name": "مخمرية الملكة", "unit": "دستة"}, {"name": "مخمرية عادة", "unit": "دستة"}, {"name": "شبة معطرة", "unit": "دستة"}, {"name": "شبة معطرة (جردل 3ك)", "unit": "جردل"}, {"name": "حنة فرد الأميرة", "unit": "كيلو"}, {"name": "حجر رجل عادة", "unit": "قطعة"}, {"name": "حجر رجل فرعوني", "unit": "قطعة"}, {"name": "قرطاس رسم حنة", "unit": "دستة"}, {"name": "برفيوم (مسك مكعب، 16 عبوة)", "unit": "باكت"}], "البخور والعطور 🕯️": [{"name": "بخور بلاك مسك", "unit": "دستة"}, {"name": "بخور وايت مسك", "unit": "دستة"}, {"name": "بخور عود", "unit": "دستة"}, {"name": "بخور صندل", "unit": "دستة"}, {"name": "بخور ورد", "unit": "دستة"}, {"name": "بخور صغير بأنواعه", "unit": "دستة"}, {"name": "بخور كبسولة", "unit": "دستة"}, {"name": "بخور سايب 4ك", "unit": "صفيحة"}, {"name": "بخور وسط مشكل بأنواعه", "unit": "دستة"}, {"name": "مسك أبيض بلية", "unit": "دستة"}, {"name": "مسك أسود بلية", "unit": "دستة"}, {"name": "بخور ناموس", "unit": "دستة"}, {"name": "بخور 5 ساعات", "unit": "دستة"}, {"name": "بخور عثماني", "unit": "صفيحة"}, {"name": "بخور بنجواتي 1×4", "unit": "دستة"}, {"name": "بخور عنبر", "unit": "دستة"}, {"name": "بخور المدينة", "unit": "دستة"}, {"name": "بخور شرقي (عود طويل)", "unit": "دستة"}], "الدهانات والعسل الملكي 🍯": [{"name": "دهان الـ90 دقيقة", "unit": "دستة"}, {"name": "دهان 1×2 بكر", "unit": "دستة"}, {"name": "دهان 1×3 بكر", "unit": "دستة"}, {"name": "دهان سهر الليالي", "unit": "دستة"}, {"name": "دهان الأسد", "unit": "دستة"}, {"name": "عسل فيجاهني", "unit": "دستة"}, {"name": "العسل الملكي", "unit": "دستة"}, {"name": "عسل ليبو 6 (حريمي/رجالي)", "unit": "دستة"}, {"name": "دهان هانتر", "unit": "دستة"}, {"name": "دهان روميو وجوليت", "unit": "دستة"}, {"name": "عسل الكافيار", "unit": "دستة"}], "المصرية الأردنية 🫒": [{"name": "صويا صوص (12 عبوة)", "unit": "كرتونة"}, {"name": "دبس رمان (12 عبوة)", "unit": "كرتونة"}, {"name": "ماء ورد غذائي (12 عبوة)", "unit": "كرتونة"}, {"name": "خل تفاح (12 عبوة)", "unit": "كرتونة"}, {"name": "زيت زيتون 250 مل (24 عبوة)", "unit": "كرتونة"}, {"name": "صوص باربكيو (12 عبوة)", "unit": "كرتونة"}, {"name": "دبس بلح (12 عبوة)", "unit": "كرتونة"}, {"name": "ماء زهر غذائي (12 عبوة)", "unit": "كرتونة"}, {"name": "زيت زيتون 750 مل (12 عبوة)", "unit": "كرتونة"}, {"name": "زيت زيتون 125 مل (24 عبوة)", "unit": "كرتونة"}, {"name": "زيت زيتون 1 لتر (6 عبوة)", "unit": "كرتونة"}, {"name": "خل تفاح عضوي (12 عبوة)", "unit": "كرتونة"}], "الحواج 🌾": [{"name": "خروع", "unit": "دستة"}, {"name": "حبة البركة", "unit": "دستة"}, {"name": "جلسرين", "unit": "دستة"}, {"name": "سمسم", "unit": "دستة"}, {"name": "كافور", "unit": "دستة"}, {"name": "نعناع", "unit": "دستة"}, {"name": "جرجير", "unit": "دستة"}, {"name": "لوز حلو", "unit": "دستة"}, {"name": "لوز مر", "unit": "دستة"}, {"name": "جوز هند", "unit": "دستة"}, {"name": "شاي أخضر", "unit": "دستة"}, {"name": "شجرة الشاي", "unit": "دستة"}, {"name": "ورد", "unit": "دستة"}, {"name": "فل", "unit": "دستة"}, {"name": "ياسمين", "unit": "دستة"}, {"name": "حب الرشاد", "unit": "دستة"}, {"name": "جنين القمح", "unit": "دستة"}, {"name": "حبر زعفران", "unit": "دستة"}, {"name": "ثوم", "unit": "دستة"}, {"name": "دهان الحنظل", "unit": "دستة"}, {"name": "جوجوبا", "unit": "دستة"}, {"name": "لافندر", "unit": "دستة"}, {"name": "كبد الحوت", "unit": "دستة"}, {"name": "صبار", "unit": "دستة"}, {"name": "قرع عسل", "unit": "دستة"}, {"name": "جزر", "unit": "دستة"}, {"name": "حلبة", "unit": "دستة"}, {"name": "برتقال", "unit": "دستة"}, {"name": "قرنفل", "unit": "دستة"}, {"name": "قرفة", "unit": "دستة"}, {"name": "جنزبيل", "unit": "دستة"}, {"name": "اللبان", "unit": "دستة"}, {"name": "بصل", "unit": "دستة"}, {"name": "خس", "unit": "دستة"}, {"name": "روزماري (حصى لبان)", "unit": "دستة"}, {"name": "الخردل", "unit": "دستة"}, {"name": "سعد النمل", "unit": "دستة"}, {"name": "ليمون", "unit": "دستة"}, {"name": "زبدة الشيا", "unit": "دستة"}, {"name": "دهن النعام", "unit": "دستة"}, {"name": "أبونج", "unit": "دستة"}, {"name": "كتان", "unit": "دستة"}, {"name": "بقدونس", "unit": "دستة"}, {"name": "جينسنج", "unit": "دستة"}, {"name": "ريحان", "unit": "دستة"}, {"name": "أرجان", "unit": "دستة"}, {"name": "أفوكادو", "unit": "دستة"}, {"name": "زيتون", "unit": "دستة"}, {"name": "عنب", "unit": "دستة"}, {"name": "جلسرين (تون/عود)", "unit": "دستة"}], "المصرية للزيوت 🧴": [{"name": "سمسم", "unit": "لتر"}, {"name": "حبة البركة سوري", "unit": "لتر"}, {"name": "لوز حلو", "unit": "لتر"}, {"name": "جوجوبا", "unit": "لتر"}, {"name": "جوز هند طبيعي", "unit": "لتر"}, {"name": "جوز هند تجميلي", "unit": "لتر"}, {"name": "كافور", "unit": "لتر"}, {"name": "برافين", "unit": "لتر"}, {"name": "ثوم", "unit": "لتر"}, {"name": "ورد", "unit": "لتر"}, {"name": "ياسمين", "unit": "لتر"}, {"name": "خردل", "unit": "لتر"}, {"name": "قرع", "unit": "لتر"}, {"name": "جرجير", "unit": "لتر"}, {"name": "خروع", "unit": "لتر"}, {"name": "لوز مر", "unit": "لتر"}, {"name": "جوز هند صناعي", "unit": "لتر"}, {"name": "نعناع", "unit": "لتر"}, {"name": "نخاع", "unit": "لتر"}, {"name": "جلسرين", "unit": "لتر"}, {"name": "صبار", "unit": "لتر"}, {"name": "فل", "unit": "لتر"}, {"name": "لافندر", "unit": "لتر"}, {"name": "بذر كتان", "unit": "لتر"}, {"name": "روز ماري", "unit": "لتر"}, {"name": "ليمون", "unit": "لتر"}, {"name": "زيت زيتون نص لتر", "unit": "لتر"}, {"name": "أرجان", "unit": "لتر"}], "منتجات متنوعة 🍚": [{"name": "أرز بسمتي هندي 1121", "unit": "كيلو"}, {"name": "أرز شعلان 1121", "unit": "كيلو"}, {"name": "أرز بسمتي هندي بي أر", "unit": "كيلو"}, {"name": "أرز بسمتي أبيض", "unit": "كيلو"}, {"name": "عسل نحل برسيم 1/4-1/2-1ك", "unit": "كرتونة (12-24 عبوة)"}, {"name": "زيت زيتون قسيمة 500 مل (24 عبوة)", "unit": "كرتونة"}, {"name": "زيت زيتون قسيمة 1 لتر (12 عبوة)", "unit": "كرتونة"}, {"name": "زيت زيتون غزة 1/2 لتر (24 عبوة)", "unit": "كرتونة"}, {"name": "زيت زيتون غزة 1 لتر (12 عبوة)", "unit": "كرتونة"}, {"name": "تمر هندي قالب 40 / 14 قطعة 910جم", "unit": "برطمان"}, {"name": "فانيليا بودر معبأة (100 عبوة)", "unit": "برطمان"}, {"name": "فانيليا سائلة معبأة (80 عبوة)", "unit": "برطمان"}, {"name": "روح (موز/برتقال/سمن/جوز هند/ورد) 36 عبوة", "unit": "برطمان"}, {"name": "جردل فازلين 10 ك", "unit": "جردل"}, {"name": "تلبينة البوادي", "unit": "دستة"}, {"name": "شاي أخضر (100جم-250جم)", "unit": "كيلو"}, {"name": "زبدة فول سوداني", "unit": "دستة"}, {"name": "زعفران 1.5 جم", "unit": "دستة"}, {"name": "صبغة ملابس ألوان", "unit": "كيلو"}, {"name": "مفتقة (24 عبوة)", "unit": "كرتونة"}, {"name": "خرز البقر", "unit": "كرتونة"}, {"name": "مستكة إيراني (10جم)", "unit": "دستة"}, {"name": "سكر نبات", "unit": "كيلو"}, {"name": "نرجيل CPC", "unit": "صفيحة"}, {"name": "حلتيت", "unit": "كيلو"}]}</script>
+
+<script>
+(function(){
+"use strict";
+
+/* ================= STORAGE LAYER ================= */
+const STORE_PREFIX = "aswany:";
+async function storeGet(key, fallback){
+  if(window.storage){
+    try{
+      const r = await window.storage.get(key, false);
+      return r ? JSON.parse(r.value) : fallback;
+    }catch(e){ return fallback; }
+  }
+  try{
+    const raw = localStorage.getItem(STORE_PREFIX+key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(e){ return fallback; }
+}
+async function storeSet(key, value){
+  if(window.storage){
+    try{ await window.storage.set(key, JSON.stringify(value), false); return; }catch(e){ /* fall through */ }
+  }
+  try{ localStorage.setItem(STORE_PREFIX+key, JSON.stringify(value)); }catch(e){}
+}
+
+/* ================= HELPERS ================= */
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function digits(s){ return (s||"").toString().replace(/[^\d+]/g,""); }
+function telHref(phone){ const d = digits(phone); return d ? "tel:"+d : "tel:"; }
+function waHref(phone, text){
+  let d = digits(phone).replace(/^\+/,"");
+  if(d.startsWith("0")) d = "2"+d; // Egypt local -> international
+  const t = text ? "?text="+encodeURIComponent(text) : "";
+  return d ? "https://wa.me/"+d+t : "https://wa.me/"+t;
+}
+function showToast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg; t.classList.add("show");
+  clearTimeout(showToast._tm);
+  showToast._tm = setTimeout(()=>t.classList.remove("show"), 2200);
+}
+function esc(s){ return (s==null?"":String(s)).replace(/[&<>"]/g, c=>({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;" }[c])); }
+
+/* ================= STATE ================= */
+let shopInfo = { name:"الأسواني", phone:"", whatsapp:"", address:"ممر 3 - شارع الجزائر - متفرع من أحمد عصمت - عين شمس" };
+let shopCatalog = {}; // { category: [{id,name,unit}] }
+let warehouse = {};   // { name: {qty,unit,category,source,updatedAt} }
+let suppliers = [];   // [{id,name,phone,isDefault}]
+let raslanCatalog = {}; // { category: [{name,unit}] } reference only
+let orderDraft = { supplierId:null, items:[] }; // items: [{name,qty,unit}]
+let extras = [];      // [{id,name,qty,unit}]
+let blends = [];      // [{id,name,ingredients:[{name,amount,unit}],notes}]
+let activeCatalogCat = "الكل";
+let activeSupplierId = null;
+let whSortLowFirst = false;
+
+const DEFAULT_CATALOG = {
+  "بهارات وتوابل 🌶️": [
+    {id:uid(), name:"كمون", unit:"جرام"}, {id:uid(), name:"فلفل أسود", unit:"جرام"},
+    {id:uid(), name:"كركم", unit:"جرام"}, {id:uid(), name:"بهارات مشكلة", unit:"جرام"}
+  ],
+  "حبوب وبقوليات 🌾": [
+    {id:uid(), name:"عدس أصفر", unit:"جرام"}, {id:uid(), name:"مكرونة", unit:"جرام"}
+  ]
+};
+
+/* ================= INIT ================= */
+async function loadAll(){
+  const rawCatalogData = JSON.parse(document.getElementById("raslan-data").textContent);
+
+  shopInfo = await storeGet("shopInfo", shopInfo);
+  shopCatalog = await storeGet("shopCatalog", null);
+  if(!shopCatalog){ shopCatalog = DEFAULT_CATALOG; await storeSet("shopCatalog", shopCatalog); }
+
+  warehouse = await storeGet("warehouse", {});
+  extras = await storeGet("extras", []);
+  blends = await storeGet("blends", []);
+  orderDraft = await storeGet("orderDraft", { supplierId:null, items:[] });
+
+  suppliers = await storeGet("suppliers", null);
+  if(!suppliers){
+    suppliers = [{ id:"raslan", name:"رسلان للتجارة والتوزيع", phone:"01148468487", isDefault:true }];
+    await storeSet("suppliers", suppliers);
+  }
+  activeSupplierId = orderDraft.supplierId || suppliers[0]?.id || null;
+
+  raslanCatalog = await storeGet("raslanCatalog", null);
+  if(!raslanCatalog){
+    raslanCatalog = rawCatalogData;
+    await storeSet("raslanCatalog", raslanCatalog);
+  }
+}
+
+/* ================= REVEAL ON SCROLL ================= */
+let revealObserver;
+function setupReveal(){
+  if(revealObserver) revealObserver.disconnect();
+  revealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); revealObserver.unobserve(en.target); } });
+  }, { threshold:.12 });
+  document.querySelectorAll(".view.active .reveal").forEach(el=>revealObserver.observe(el));
+}
+function markReveal(container){
+  container.querySelectorAll(":scope > *").forEach((el,i)=>{
+    el.classList.add("reveal");
+    el.style.transitionDelay = Math.min(i*45,260)+"ms";
+  });
+}
+
+/* ================= NAV ================= */
+function switchTab(tab){
+  document.querySelectorAll(".side-link").forEach(b=>b.classList.toggle("active", b.dataset.tab===tab));
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active", v.id==="view-"+tab));
+  window.scrollTo({top:0, behavior:"smooth"});
+  renderAll();
+  setTimeout(setupReveal, 30);
+  updateQuickOrderFab();
+}
+
+/* زر إرسال الطلبية العائم — يفضل ظاهر وقريب من الإصبع طول ما فيه أصناف في الطلبية */
+function updateQuickOrderFab(){
+  const fab = document.getElementById("quickOrderFab");
+  if(!fab) return;
+  const onOrders = document.getElementById("view-orders")?.classList.contains("active");
+  const count = orderDraft.items.length;
+  document.getElementById("quickOrderBadge").textContent = count;
+  fab.classList.toggle("show", !!(onOrders && count>0));
+}
+document.getElementById("quickOrderFab").addEventListener("click", ()=>{
+  document.getElementById("sendOrderWaBtn").click();
+});
+const sidebarEl = document.getElementById("sidebar");
+const sidebarOverlayEl = document.getElementById("sidebarOverlay");
+function openSidebar(){ sidebarEl.classList.add("open"); sidebarOverlayEl.classList.add("open"); }
+function closeSidebar(){ sidebarEl.classList.remove("open"); sidebarOverlayEl.classList.remove("open"); }
+document.getElementById("hamburgerBtn").addEventListener("click", openSidebar);
+document.getElementById("closeSidebarBtn").addEventListener("click", closeSidebar);
+sidebarOverlayEl.addEventListener("click", closeSidebar);
+document.getElementById("sidebarNav").addEventListener("click", e=>{
+  const b = e.target.closest(".side-link"); if(!b) return; switchTab(b.dataset.tab); closeSidebar();
+});
+document.querySelectorAll(".quick-card").forEach(c=>c.addEventListener("click", ()=>switchTab(c.dataset.goto)));
+
+/* ================= MODAL ================= */
+function openModal(title, bodyHtml, onMount){
+  document.getElementById("modalTitle").textContent = title;
+  document.getElementById("modalBody").innerHTML = bodyHtml;
+  document.getElementById("modalOverlay").classList.add("open");
+  if(onMount) onMount(document.getElementById("modalBody"));
+}
+function closeModal(){ document.getElementById("modalOverlay").classList.remove("open"); }
+document.getElementById("modalOverlay").addEventListener("click", e=>{ if(e.target.id==="modalOverlay") closeModal(); });
+
+/* ================= HOME ================= */
+function renderHome(){
+  document.getElementById("siName").value = shopInfo.name||"";
+  document.getElementById("siPhone").value = shopInfo.phone||"";
+  document.getElementById("siWa").value = shopInfo.whatsapp||"";
+  document.getElementById("siAddr").value = shopInfo.address||"";
+
+  const callHref = telHref(shopInfo.phone);
+  const waLink = waHref(shopInfo.whatsapp||shopInfo.phone, "أهلاً، حابب أستفسر عن صنف");
+  document.getElementById("homeCallBtn").href = callHref;
+  document.getElementById("homeWaBtn").href = waLink;
+  document.getElementById("floatCallBtn").href = callHref;
+  document.getElementById("floatWaBtn").href = waLink;
+
+  const catCount = Object.values(shopCatalog).reduce((a,b)=>a+b.length,0);
+  document.getElementById("statCatalog").textContent = catCount;
+  document.getElementById("statWarehouse").textContent = Object.keys(warehouse).length;
+  document.getElementById("statSuppliers").textContent = suppliers.length;
+  document.getElementById("statBlends").textContent = blends.length;
+
+  markReveal(document.getElementById("view-home"));
+}
+document.getElementById("saveShopInfo").addEventListener("click", async ()=>{
+  shopInfo = {
+    name: document.getElementById("siName").value.trim() || "الأسواني",
+    phone: document.getElementById("siPhone").value.trim(),
+    whatsapp: document.getElementById("siWa").value.trim(),
+    address: document.getElementById("siAddr").value.trim()
+  };
+  await storeSet("shopInfo", shopInfo);
+  document.querySelector(".brand-name").textContent = shopInfo.name;
+  renderHome();
+  showToast("تم حفظ بيانات المحل ✅");
+});
+
+/* ================= CATALOG (shop items) ================= */
+function catalogCategories(){ return Object.keys(shopCatalog); }
+
+function renderCatalogChips(){
+  const cats = ["الكل", ...catalogCategories()];
+  document.getElementById("catalogCats").innerHTML = cats.map(c=>
+    `<button class="chip${c===activeCatalogCat?" active":""}" data-cat="${esc(c)}">${esc(c)}</button>`
+  ).join("");
+}
+document.getElementById("catalogCats").addEventListener("click", e=>{
+  const b = e.target.closest(".chip"); if(!b) return;
+  activeCatalogCat = b.dataset.cat; renderCatalog();
+});
+document.getElementById("catalogSearch").addEventListener("input", renderCatalog);
+
+function allCatalogItemsFlat(){
+  const out = [];
+  Object.entries(shopCatalog).forEach(([cat, items])=>items.forEach(it=>out.push({...it, category:cat})));
+  return out;
+}
+
+function weightPickerHtml(itemId){
+  return `
+    <div class="weight-row" data-item="${itemId}">
+      <button class="wchip" data-w="500">500 جم</button>
+      <button class="wchip" data-w="1000">1 كجم</button>
+      <button class="wchip" data-w="2000">2 كجم</button>
+      <input type="number" min="1" class="wcustom" placeholder="وزن مخصص (جم)">
+    </div>`;
+}
+
+function renderCatalog(){
+  const term = document.getElementById("catalogSearch").value.trim().toLowerCase();
+  const listEl = document.getElementById("catalogList");
+  renderCatalogChips();
+
+  let items = allCatalogItemsFlat();
+  if(term) items = items.filter(it=>it.name.toLowerCase().includes(term));
+  else if(activeCatalogCat!=="الكل") items = items.filter(it=>it.category===activeCatalogCat);
+
+  document.getElementById("catalogCount").textContent = items.length+" صنف";
+
+  if(!items.length){
+    listEl.innerHTML = `<div class="emptystate"><span class="ic">🔍</span>مفيش أصناف مطابقة — جرب كلمة تانية أو ضيف صنف جديد</div>`;
+    return;
+  }
+
+  listEl.innerHTML = items.map(it=>`
+    <div class="item-card">
+      <div class="item-top">
+        <div>
+          <div class="item-name">${esc(it.name)}</div>
+          <div class="item-meta">${esc(it.category)} • الوحدة: ${esc(it.unit||"جرام")}</div>
+        </div>
+        <div class="item-icons">
+          <button class="icon-btn" data-edit="${it.id}">✏️</button>
+          <button class="icon-btn" data-del="${it.id}">🗑️</button>
+        </div>
+      </div>
+      ${weightPickerHtml(it.id)}
+      <div class="item-actions">
+        <button class="btn paprika small" data-sell="${it.id}" style="flex:1;">🧾 خصم من المخزون (تم البيع)</button>
+      </div>
+    </div>
+  `).join("");
+  markReveal(listEl);
+  setTimeout(setupReveal, 20);
+}
+
+document.getElementById("catalogList").addEventListener("click", e=>{
+  const wchip = e.target.closest(".wchip");
+  if(wchip){
+    const row = wchip.closest(".weight-row");
+    row.querySelectorAll(".wchip").forEach(c=>c.classList.remove("sel"));
+    wchip.classList.add("sel");
+    row.querySelector(".wcustom").value = "";
+    return;
+  }
+  const editId = e.target.closest("[data-edit]")?.dataset.edit;
+  if(editId) return openCatalogItemModal(editId);
+  const delId = e.target.closest("[data-del]")?.dataset.del;
+  if(delId) return deleteCatalogItem(delId);
+
+  const sellId = e.target.closest("[data-sell]")?.dataset.sell;
+  if(sellId){
+    const card = e.target.closest(".item-card");
+    const row = card.querySelector(".weight-row");
+    const sel = row.querySelector(".wchip.sel");
+    const customVal = row.querySelector(".wcustom").value;
+    const grams = customVal ? parseFloat(customVal) : (sel ? parseFloat(sel.dataset.w) : null);
+    if(!grams || grams<=0){ showToast("اختار الوزن الأول ⚖️"); return; }
+    const item = allCatalogItemsFlat().find(x=>x.id===sellId);
+    if(!item) return;
+    deductFromWarehouse(item.name, grams, item.unit==="جرام"?"جرام":item.unit, item.category);
+    showToast(`تم خصم ${grams} من ${item.name} ✅`);
+  }
+});
+
+function openCatalogItemModal(id){
+  const isNew = !id;
+  let item = null, cat = catalogCategories()[0]||"";
+  if(!isNew){
+    for(const [c, arr] of Object.entries(shopCatalog)){
+      const f = arr.find(x=>x.id===id);
+      if(f){ item = f; cat = c; break; }
+    }
+  }
+  const cats = catalogCategories();
+  openModal(isNew?"➕ إضافة صنف جديد":"✏️ تعديل الصنف", `
+    <div class="field-grid">
+      <div class="field"><label>اسم الصنف</label><input id="mfName" value="${esc(item?.name||"")}" placeholder="مثال: كمون"></div>
+      <div class="field"><label>القسم</label>
+        <select id="mfCat">
+          ${cats.map(c=>`<option value="${esc(c)}" ${c===cat?"selected":""}>${esc(c)}</option>`).join("")}
+          <option value="__new__">+ قسم جديد</option>
+        </select>
+      </div>
+      <div class="field" id="mfNewCatWrap" style="display:none;"><label>اسم القسم الجديد</label><input id="mfNewCat" placeholder="اسم القسم"></div>
+      <div class="field"><label>الوحدة</label><input id="mfUnit" value="${esc(item?.unit||"جرام")}" placeholder="جرام / قطعة / علبة"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn gold" id="mfSave" style="flex:1;">💾 حفظ</button>
+      <button class="btn ghost" id="mfCancel">إلغاء</button>
+    </div>
+  `, (body)=>{
+    body.querySelector("#mfCat").addEventListener("change", e=>{
+      body.querySelector("#mfNewCatWrap").style.display = e.target.value==="__new__"?"block":"none";
+    });
+    body.querySelector("#mfCancel").addEventListener("click", closeModal);
+    body.querySelector("#mfSave").addEventListener("click", async ()=>{
+      const name = body.querySelector("#mfName").value.trim();
+      if(!name){ showToast("اكتب اسم الصنف"); return; }
+      let catVal = body.querySelector("#mfCat").value;
+      if(catVal==="__new__"){
+        catVal = body.querySelector("#mfNewCat").value.trim();
+        if(!catVal){ showToast("اكتب اسم القسم الجديد"); return; }
+      }
+      const unit = body.querySelector("#mfUnit").value.trim() || "جرام";
+
+      if(!isNew){
+        for(const arr of Object.values(shopCatalog)) {
+          const idx = arr.findIndex(x=>x.id===id);
+          if(idx>-1) arr.splice(idx,1);
+        }
+      }
+      if(!shopCatalog[catVal]) shopCatalog[catVal] = [];
+      shopCatalog[catVal].push({ id:isNew?uid():id, name, unit });
+      await storeSet("shopCatalog", shopCatalog);
+      closeModal(); renderCatalog(); renderHome();
+      showToast(isNew?"تمت إضافة الصنف ✅":"تم تعديل الصنف ✅");
+    });
+  });
+}
+document.getElementById("addCatalogItemBtn").addEventListener("click", ()=>openCatalogItemModal(null));
+
+async function deleteCatalogItem(id){
+  for(const arr of Object.values(shopCatalog)){
+    const idx = arr.findIndex(x=>x.id===id);
+    if(idx>-1) arr.splice(idx,1);
+  }
+  await storeSet("shopCatalog", shopCatalog);
+  renderCatalog(); renderHome();
+  showToast("تم حذف الصنف");
+}
+
+/* ================= WAREHOUSE ================= */
+async function mergeIntoWarehouse(name, qty, unit, category, source){
+  name = name.trim(); if(!name) return;
+  const existing = warehouse[name];
+  if(existing){ existing.qty = (parseFloat(existing.qty)||0) + (parseFloat(qty)||0); existing.updatedAt = Date.now(); existing.source = source||existing.source; }
+  else warehouse[name] = { qty: parseFloat(qty)||0, unit: unit||"وحدة", category: category||"عام", source: source||"يدوي", updatedAt: Date.now() };
+  await storeSet("warehouse", warehouse);
+}
+async function deductFromWarehouse(name, amount, unit, category){
+  name = name.trim();
+  const existing = warehouse[name];
+  if(existing) existing.qty = (parseFloat(existing.qty)||0) - (parseFloat(amount)||0);
+  else warehouse[name] = { qty: -(parseFloat(amount)||0), unit: unit||"جرام", category: category||"عام", source:"بيع", updatedAt: Date.now() };
+  warehouse[name].updatedAt = Date.now();
+  await storeSet("warehouse", warehouse);
+  renderWarehouse(); renderHome();
+}
+
+function renderWarehouse(){
+  const term = document.getElementById("whSearch").value.trim().toLowerCase();
+  let entries = Object.entries(warehouse);
+  if(term) entries = entries.filter(([name])=>name.toLowerCase().includes(term));
+  if(whSortLowFirst) entries.sort((a,b)=>(a[1].qty)-(b[1].qty));
+  else entries.sort((a,b)=>b[1].updatedAt-a[1].updatedAt);
+
+  document.getElementById("whCount").textContent = Object.keys(warehouse).length+" صنف";
+  const listEl = document.getElementById("warehouseList");
+  if(!entries.length){
+    listEl.innerHTML = `<div class="emptystate"><span class="ic">📦</span>المخزن لسه فاضي — ضيف صنف يدويًا أو أكّد أول طلبية</div>`;
+    return;
+  }
+  const sourceLabel = {yداوي:"يدوي", "يدوي":"يدوي", "طلبية":"من طلبية", "pdf":"من PDF", "بيع":"بيع/خصم"};
+  listEl.innerHTML = entries.map(([name, d])=>`
+    <div class="wh-row ${d.qty<=0?'low':''}">
+      <div>
+        <div class="wh-name">${esc(name)}</div>
+        <div class="wh-meta"><span class="badge">${esc(d.category||"عام")}</span><span class="badge">${esc(sourceLabel[d.source]||d.source||"يدوي")}</span></div>
+      </div>
+      <div style="text-align:left;">
+        <div class="wh-qty">${(+d.qty.toFixed?d.qty.toFixed(2):d.qty).toString().replace(/\.00$/,"")} ${esc(d.unit||"")}</div>
+        <div class="wh-actions">
+          <button class="icon-btn" data-whedit="${esc(name)}">✏️</button>
+          <button class="icon-btn" data-whdel="${esc(name)}">🗑️</button>
+        </div>
+      </div>
+    </div>
+  `).join("");
+  markReveal(listEl);
+  setTimeout(setupReveal, 20);
+}
+document.getElementById("whSearch").addEventListener("input", renderWarehouse);
+document.getElementById("whSortLow").addEventListener("click", ()=>{ whSortLowFirst = !whSortLowFirst; renderWarehouse(); });
+
+document.getElementById("warehouseList").addEventListener("click", e=>{
+  const editName = e.target.closest("[data-whedit]")?.dataset.whedit;
+  if(editName) return openWhItemModal(editName);
+  const delName = e.target.closest("[data-whdel]")?.dataset.whdel;
+  if(delName){
+    delete warehouse[delName];
+    storeSet("warehouse", warehouse).then(()=>{ renderWarehouse(); renderHome(); showToast("تم حذف الصنف من المخزن"); });
+  }
+});
+
+function openWhItemModal(name){
+  const isNew = !name;
+  const d = name ? warehouse[name] : { qty:0, unit:"كيلو", category:"عام" };
+  openModal(isNew?"➕ إضافة صنف للمخزن":"✏️ تعديل رصيد الصنف", `
+    <div class="field-grid">
+      <div class="field"><label>اسم الصنف</label><input id="whfName" value="${esc(name||"")}" ${isNew?"":"disabled"}></div>
+      <div class="field"><label>الكمية المتاحة</label><input id="whfQty" type="number" value="${d.qty}"></div>
+      <div class="field"><label>الوحدة</label><input id="whfUnit" value="${esc(d.unit||"كيلو")}" placeholder="كيلو / دستة / كرتونة"></div>
+      <div class="field"><label>التصنيف</label><input id="whfCat" value="${esc(d.category||"عام")}"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn gold" id="whfSave" style="flex:1;">💾 حفظ</button>
+      <button class="btn ghost" id="whfCancel">إلغاء</button>
+    </div>
+  `, body=>{
+    body.querySelector("#whfCancel").addEventListener("click", closeModal);
+    body.querySelector("#whfSave").addEventListener("click", async ()=>{
+      const nm = body.querySelector("#whfName").value.trim();
+      if(!nm){ showToast("اكتب اسم الصنف"); return; }
+      const qty = parseFloat(body.querySelector("#whfQty").value)||0;
+      const unit = body.querySelector("#whfUnit").value.trim()||"كيلو";
+      const cat = body.querySelector("#whfCat").value.trim()||"عام";
+      warehouse[nm] = { qty, unit, category:cat, source: warehouse[nm]?.source||"يدوي", updatedAt: Date.now() };
+      await storeSet("warehouse", warehouse);
+      closeModal(); renderWarehouse(); renderHome();
+      showToast("تم الحفظ ✅");
+    });
+  });
+}
+document.getElementById("addWhItemBtn").addEventListener("click", ()=>openWhItemModal(null));
+
+/* ---- PDF import ---- */
+let pdfExtractedRows = [];
+document.getElementById("importPdfBtn").addEventListener("click", ()=>document.getElementById("pdfFileInput").click());
+document.getElementById("pdfFileInput").addEventListener("change", async (e)=>{
+  const file = e.target.files[0]; if(!file) return;
+  showToast("جاري قراءة الملف... ⏳");
+  try{
+    if(window.pdfjsLib){
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    }
+    const buf = await file.arrayBuffer();
+    const pdf = await window.pdfjsLib.getDocument({data:buf}).promise;
+    let lines = [];
+    for(let p=1; p<=pdf.numPages; p++){
+      const page = await pdf.getPage(p);
+      const content = await page.getTextContent();
+      let lastY=null, cur=[];
+      content.items.forEach(it=>{
+        const y = Math.round(it.transform[5]);
+        if(lastY!==null && Math.abs(y-lastY)>4){ if(cur.length) lines.push(cur.join(" ")); cur=[]; }
+        cur.push(it.str); lastY=y;
+      });
+      if(cur.length) lines.push(cur.join(" "));
+    }
+    pdfExtractedRows = parsePdfLines(lines);
+    renderPdfPreview();
+  }catch(err){
+    showToast("تعذّرت قراءة الملف — جرب PDF تاني");
+    console.error(err);
+  }
+  e.target.value = "";
+});
+
+function parsePdfLines(lines){
+  const unitWords = ["كجم","كيلو","جم","جرام","قطعة","علبة","كرتونة","دستة","لتر","شكارة","صفيحة","برطمان","جردل","كيس","عبوة"];
+  const rows = [];
+  lines.forEach(line=>{
+    line = line.trim();
+    if(!line || line.length<2) return;
+    const m = line.match(/^(.{2,60}?)[\s:\-–]+(\d+(?:[.,]\d+)?)\s*([\u0600-\u06FFA-Za-z]*)\s*$/);
+    if(m){
+      const name = m[1].trim();
+      const qty = parseFloat(m[2].replace(",","."));
+      let unit = m[3].trim();
+      if(!unitWords.includes(unit)) unit = unitWords.find(u=>line.includes(u)) || "قطعة";
+      if(name && qty) rows.push({ name, qty, unit, include:true });
+    }
+  });
+  return rows;
+}
+
+function renderPdfPreview(){
+  const box = document.getElementById("pdfPreviewBox");
+  const list = document.getElementById("pdfPreviewList");
+  if(!pdfExtractedRows.length){
+    list.innerHTML = `<div class="emptystate">مقدرناش نستخرج أصناف وكميات واضحة من الملف — جرب تضيفهم يدويًا من زر "إضافة صنف يدويًا".</div>`;
+  } else {
+    list.innerHTML = pdfExtractedRows.map((r,i)=>`
+      <div class="order-line">
+        <label style="display:flex; align-items:center; gap:8px; flex:1;">
+          <input type="checkbox" ${r.include?"checked":""} data-pdfchk="${i}">
+          ${esc(r.name)}
+        </label>
+        <input class="qty-input" type="number" value="${r.qty}" data-pdfqty="${i}">
+        <span class="hint" style="font-size:11px; color:var(--muted); min-width:34px;">${esc(r.unit)}</span>
+      </div>
+    `).join("");
+  }
+  box.style.display = "block";
+  box.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+document.getElementById("pdfPreviewList").addEventListener("change", e=>{
+  const chk = e.target.closest("[data-pdfchk]");
+  if(chk) pdfExtractedRows[+chk.dataset.pdfchk].include = chk.checked;
+  const qty = e.target.closest("[data-pdfqty]");
+  if(qty) pdfExtractedRows[+qty.dataset.pdfqty].qty = parseFloat(qty.value)||0;
+});
+document.getElementById("pdfCancelBtn").addEventListener("click", ()=>{
+  document.getElementById("pdfPreviewBox").style.display="none"; pdfExtractedRows=[];
+});
+document.getElementById("pdfConfirmBtn").addEventListener("click", async ()=>{
+  const picked = pdfExtractedRows.filter(r=>r.include);
+  if(!picked.length){ showToast("مفيش أصناف محددة"); return; }
+  for(const r of picked) await mergeIntoWarehouse(r.name, r.qty, r.unit, "من رسلان (PDF)", "pdf");
+  document.getElementById("pdfPreviewBox").style.display="none"; pdfExtractedRows=[];
+  renderWarehouse(); renderHome();
+  showToast(`تم إضافة ${picked.length} صنف للمخزن من الملف ✅`);
+});
+
+/* ================= ORDERS & SUPPLIERS ================= */
+function renderSupplierPills(){
+  document.getElementById("supplierPills").innerHTML = suppliers.map(s=>
+    `<button class="supplier-pill${s.id===activeSupplierId?" active":""}" data-sup="${s.id}">🏪 ${esc(s.name)}</button>`
+  ).join("");
+}
+document.getElementById("supplierPills").addEventListener("click", async e=>{
+  const b = e.target.closest("[data-sup]"); if(!b) return;
+  activeSupplierId = b.dataset.sup;
+  orderDraft.supplierId = activeSupplierId;
+  await storeSet("orderDraft", orderDraft);
+  renderOrders();
+});
+document.getElementById("addSupplierBtn").addEventListener("click", ()=>{
+  openModal("➕ إضافة تاجر جديد", `
+    <div class="field-grid">
+      <div class="field"><label>اسم التاجر</label><input id="supName" placeholder="اسم التاجر أو المحل"></div>
+      <div class="field"><label>رقم الواتساب</label><input id="supPhone" placeholder="01xxxxxxxxx" dir="ltr"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn gold" id="supSave" style="flex:1;">💾 إضافة</button>
+      <button class="btn ghost" id="supCancel">إلغاء</button>
+    </div>
+  `, body=>{
+    body.querySelector("#supCancel").addEventListener("click", closeModal);
+    body.querySelector("#supSave").addEventListener("click", async ()=>{
+      const name = body.querySelector("#supName").value.trim();
+      const phone = body.querySelector("#supPhone").value.trim();
+      if(!name){ showToast("اكتب اسم التاجر"); return; }
+      const s = { id:uid(), name, phone, isDefault:false };
+      suppliers.push(s); await storeSet("suppliers", suppliers);
+      activeSupplierId = s.id; orderDraft.supplierId = s.id; await storeSet("orderDraft", orderDraft);
+      closeModal(); renderOrders(); renderHome();
+      showToast("تم إضافة التاجر ✅");
+    });
+  });
+});
+
+/* ===== خيارات التعبئة السريعة للكمية/الوزن (شكارة، نص شكارة...) حسب وحدة الصنف ===== */
+function qtyPresets(unit){
+  const u = (unit||"").trim();
+  const rules = [
+    [/شكاره|شكارة/,  [["شكارة",1],["نص شكارة",0.5],["2 شكارة",2]]],
+    [/كرتونة/,        [["كرتونة",1],["نص كرتونة",0.5],["2 كرتونة",2]]],
+    [/جردل/,          [["جردل",1],["نص جردل",0.5],["2 جردل",2]]],
+    [/دستة/,          [["دستة",1],["نص دستة",0.5],["2 دستة",2]]],
+    [/كيلو|كجم/,      [["1 كيلو",1],["نص كيلو",0.5],["ربع كيلو",0.25]]],
+    [/لتر/,           [["1 لتر",1],["نص لتر",0.5],["ربع لتر",0.25]]],
+    [/صفيحة|برطمان|قالب|علبة|باكت|كيس|عبوة|قطعة/, [["1",1],["2",2],["5",5]]],
+  ];
+  for(const [re, opts] of rules){ if(re.test(u)) return opts; }
+  return [["1",1],["2",2],["5",5]];
+}
+function qchipButtonsHtml(unit){
+  return qtyPresets(unit).map(([label,val])=>
+    `<button type="button" class="qchip" data-qval="${val}">${esc(label)}</button>`).join("");
+}
+function qchipsHtml(unit){
+  return `<div class="qchip-row">${qchipButtonsHtml(unit)}</div>`;
+}
+
+function renderSupplierPicker(){
+  const area = document.getElementById("supplierPickerArea");
+  const sup = suppliers.find(s=>s.id===activeSupplierId);
+  if(!sup){ area.innerHTML = ""; return; }
+
+  if(sup.id==="raslan"){
+    area.innerHTML = `
+      <div class="search-wrap" style="top:0;">
+        <input class="searchbox" id="raslanSearch" placeholder="🔍 دور في كتالوج رسلان (${Object.values(raslanCatalog).reduce((a,b)=>a+b.length,0)} صنف)">
+        <div class="chip-row" id="raslanCats"></div>
+      </div>
+      <div id="raslanList"></div>`;
+    renderRaslanCatalogPicker();
+  } else {
+    area.innerHTML = `
+      <div class="field-grid">
+        <div class="field"><label>اسم الصنف</label><input id="manName" placeholder="اسم الصنف"></div>
+        <div style="display:flex; gap:8px;">
+          <div class="field" style="flex:1;"><label>الكمية</label><input id="manQty" type="number" placeholder="الكمية"></div>
+          <div class="field" style="flex:1;"><label>الوحدة</label><input id="manUnit" placeholder="كيلو / كرتونة..."></div>
+        </div>
+        <div class="qchip-row" id="manQchips"></div>
+        <button class="btn gold" id="manAdd">➕ إضافة للطلبية</button>
+      </div>`;
+    const drawManQchips = ()=>{ document.getElementById("manQchips").innerHTML = qchipButtonsHtml(document.getElementById("manUnit").value); };
+    drawManQchips();
+    document.getElementById("manUnit").addEventListener("input", drawManQchips);
+    document.getElementById("manQchips").addEventListener("click", e=>{
+      const chip = e.target.closest(".qchip"); if(!chip) return;
+      document.getElementById("manQty").value = chip.dataset.qval;
+    });
+    document.getElementById("manAdd").addEventListener("click", async ()=>{
+      const name = document.getElementById("manName").value.trim();
+      const qty = parseFloat(document.getElementById("manQty").value)||0;
+      const unit = document.getElementById("manUnit").value.trim()||"وحدة";
+      if(!name||!qty){ showToast("اكتب الاسم والكمية"); return; }
+      addToDraft(name, qty, unit);
+      document.getElementById("manName").value=""; document.getElementById("manQty").value="";
+    });
+  }
+}
+
+let activeRaslanCat = "الكل";
+function renderRaslanCatalogPicker(){
+  const cats = ["الكل", ...Object.keys(raslanCatalog)];
+  document.getElementById("raslanCats").innerHTML = cats.map(c=>
+    `<button class="chip${c===activeRaslanCat?" active":""}" data-rcat="${esc(c)}">${esc(c)}</button>`
+  ).join("");
+  drawRaslanList();
+}
+document.getElementById("supplierPickerArea").addEventListener("click", e=>{
+  const chip = e.target.closest("[data-rcat]");
+  if(chip){ activeRaslanCat = chip.dataset.rcat; renderRaslanCatalogPicker(); }
+});
+document.getElementById("supplierPickerArea").addEventListener("input", e=>{
+  if(e.target.id==="raslanSearch") drawRaslanList();
+});
+function drawRaslanList(){
+  const term = (document.getElementById("raslanSearch")?.value||"").trim().toLowerCase();
+  let flat = [];
+  Object.entries(raslanCatalog).forEach(([cat, arr])=>arr.forEach(it=>flat.push({...it, cat})));
+  if(term) flat = flat.filter(it=>it.name.toLowerCase().includes(term));
+  else if(activeRaslanCat!=="الكل") flat = flat.filter(it=>it.cat===activeRaslanCat);
+  flat = flat.slice(0, 120);
+  const list = document.getElementById("raslanList");
+  if(!list) return;
+  if(!flat.length){ list.innerHTML = `<div class="emptystate">مفيش نتايج — جرب كلمة تانية</div>`; return; }
+  list.innerHTML = flat.map(it=>`
+    <div class="order-line">
+      <span style="flex:1;">${esc(it.name)} <span class="hint" style="color:var(--muted); font-size:11px;">(${esc(it.unit)})</span></span>
+      <input class="qty-input" type="number" min="1" step="any" placeholder="الكمية">
+      <button class="icon-btn" data-raddname="${esc(it.name)}" data-radunit="${esc(it.unit)}">➕</button>
+      ${qchipsHtml(it.unit)}
+    </div>
+  `).join("");
+}
+document.getElementById("supplierPickerArea").addEventListener("click", e=>{
+  const chip = e.target.closest(".qchip");
+  if(chip){
+    const row = chip.closest(".order-line");
+    const qtyInput = row?.querySelector(".qty-input");
+    if(qtyInput) qtyInput.value = chip.dataset.qval;
+    return;
+  }
+  const b = e.target.closest("[data-raddname]"); if(!b) return;
+  const row = b.closest(".order-line");
+  const qty = parseFloat(row.querySelector(".qty-input").value)||1;
+  addToDraft(b.dataset.raddname, qty, b.dataset.radunit);
+  row.querySelector(".qty-input").value = "";
+});
+
+async function addToDraft(name, qty, unit){
+  const existing = orderDraft.items.find(i=>i.name===name);
+  if(existing) existing.qty += qty;
+  else orderDraft.items.push({ name, qty, unit });
+  await storeSet("orderDraft", orderDraft);
+  renderDraft();
+  showToast(`أُضيف ${name} للطلبية ✅`);
+}
+
+function renderDraft(){
+  document.getElementById("draftCount").textContent = orderDraft.items.length+" صنف";
+  const el = document.getElementById("draftList");
+  if(!orderDraft.items.length){
+    el.innerHTML = `<div class="emptystate">لسه مفيش أصناف في الطلبية</div>`; return;
+  }
+  el.innerHTML = orderDraft.items.map((it,i)=>`
+    <div class="order-line">
+      <span style="flex:1;">${esc(it.name)}</span>
+      <input class="qty-input" type="number" value="${it.qty}" data-draftqty="${i}">
+      <span class="hint" style="font-size:11px; min-width:30px;">${esc(it.unit)}</span>
+      <button class="icon-btn" data-draftdel="${i}">🗑️</button>
+      ${qchipsHtml(it.unit)}
+    </div>
+  `).join("");
+  updateQuickOrderFab();
+}
+document.getElementById("draftList").addEventListener("input", e=>{
+  const idx = e.target.closest("[data-draftqty]")?.dataset.draftqty;
+  if(idx!==undefined) { orderDraft.items[+idx].qty = parseFloat(e.target.value)||0; storeSet("orderDraft", orderDraft); }
+});
+document.getElementById("draftList").addEventListener("click", e=>{
+  const chip = e.target.closest(".qchip");
+  if(chip){
+    const row = chip.closest(".order-line");
+    const qtyInput = row?.querySelector("[data-draftqty]");
+    if(qtyInput){
+      const idx = qtyInput.dataset.draftqty;
+      const val = parseFloat(chip.dataset.qval)||1;
+      qtyInput.value = val;
+      orderDraft.items[+idx].qty = val;
+      storeSet("orderDraft", orderDraft);
+    }
+    return;
+  }
+  const idx = e.target.closest("[data-draftdel]")?.dataset.draftdel;
+  if(idx!==undefined){ orderDraft.items.splice(+idx,1); storeSet("orderDraft", orderDraft); renderDraft(); }
+});
+document.getElementById("clearDraftBtn").addEventListener("click", async ()=>{
+  orderDraft.items = []; await storeSet("orderDraft", orderDraft); renderDraft();
+});
+
+document.getElementById("sendOrderWaBtn").addEventListener("click", async ()=>{
+  const sup = suppliers.find(s=>s.id===activeSupplierId);
+  if(!sup){ showToast("اختار تاجر الأول"); return; }
+  if(!orderDraft.items.length){ showToast("الطلبية فاضية"); return; }
+
+  const lines = orderDraft.items.map(it=>`• ${it.name} — ${it.qty} ${it.unit}`).join("\n");
+  const msg = `طلبية جديدة من ${shopInfo.name||"الأسواني"}:\n\n${lines}\n\nمنتظرين تأكيدكم 🙏`;
+  const link = waHref(sup.phone, msg);
+  window.open(link, "_blank");
+
+  // الربط الأوتوماتيكي: إرسال الطلبية على واتساب = تسجيلها فورًا في المخزن الرئيسي
+  for(const it of orderDraft.items) await mergeIntoWarehouse(it.name, it.qty, it.unit, `من طلبية (${sup.name})`, "طلبية");
+  orderDraft.items = [];
+  await storeSet("orderDraft", orderDraft);
+  renderDraft(); renderWarehouse(); renderHome();
+  showToast("تم إرسال الطلبية وتحديث المخزن أوتوماتيك ✅");
+});
+
+function renderOrders(){
+  renderSupplierPills();
+  renderSupplierPicker();
+  renderDraft();
+  markReveal(document.getElementById("view-orders"));
+}
+
+/* ================= EXTRAS (rose) ================= */
+function renderExtras(){
+  document.getElementById("extrasCount").textContent = extras.length+" صنف";
+  const el = document.getElementById("extrasList");
+  if(!extras.length){
+    el.innerHTML = `<div class="emptystate"><span class="ic">🌹</span>لسه مفيش أصناف — ضيف أول صنف من الورد ومستلزماته</div>`;
+    return;
+  }
+  el.innerHTML = extras.map(x=>`
+    <div class="extra-row">
+      <div>
+        <div class="wh-name">${esc(x.name)}</div>
+        <div class="wh-meta"><span class="badge">${esc(x.qty)} ${esc(x.unit)}</span></div>
+      </div>
+      <div class="wh-actions">
+        <button class="icon-btn" data-exedit="${x.id}">✏️</button>
+        <button class="icon-btn" data-exdel="${x.id}">🗑️</button>
+      </div>
+    </div>
+  `).join("");
+  markReveal(el);
+  setTimeout(setupReveal, 20);
+}
+document.getElementById("addExtraBtn").addEventListener("click", ()=>openExtraModal(null));
+document.getElementById("extrasList").addEventListener("click", e=>{
+  const editId = e.target.closest("[data-exedit]")?.dataset.exedit;
+  if(editId) return openExtraModal(editId);
+  const delId = e.target.closest("[data-exdel]")?.dataset.exdel;
+  if(delId){
+    extras = extras.filter(x=>x.id!==delId);
+    storeSet("extras", extras).then(()=>{ renderExtras(); showToast("تم الحذف"); });
+  }
+});
+function openExtraModal(id){
+  const isNew = !id;
+  const x = isNew? {name:"",qty:0,unit:"قطعة"} : extras.find(e=>e.id===id);
+  openModal(isNew?"➕ إضافة صنف":"✏️ تعديل الصنف", `
+    <div class="field-grid">
+      <div class="field"><label>الاسم</label><input id="exName" value="${esc(x.name)}"></div>
+      <div style="display:flex; gap:8px;">
+        <div class="field" style="flex:1;"><label>الكمية</label><input id="exQty" type="number" value="${x.qty}"></div>
+        <div class="field" style="flex:1;"><label>الوحدة</label><input id="exUnit" value="${esc(x.unit)}"></div>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn rose" id="exSave" style="flex:1;">💾 حفظ</button>
+      <button class="btn ghost" id="exCancel">إلغاء</button>
+    </div>
+  `, body=>{
+    body.querySelector("#exCancel").addEventListener("click", closeModal);
+    body.querySelector("#exSave").addEventListener("click", async ()=>{
+      const name = body.querySelector("#exName").value.trim();
+      if(!name){ showToast("اكتب الاسم"); return; }
+      const qty = parseFloat(body.querySelector("#exQty").value)||0;
+      const unit = body.querySelector("#exUnit").value.trim()||"قطعة";
+      if(isNew) extras.push({id:uid(), name, qty, unit});
+      else { x.name=name; x.qty=qty; x.unit=unit; }
+      await storeSet("extras", extras);
+      closeModal(); renderExtras();
+      showToast("تم الحفظ ✅");
+    });
+  });
+}
+
+/* ================= BLENDS ================= */
+function renderBlends(){
+  document.getElementById("blendsCount").textContent = blends.length+" خلطة";
+  const el = document.getElementById("blendsList");
+  if(!blends.length){
+    el.innerHTML = `<div class="emptystate"><span class="ic">🧪</span>لسه مفيش خلطات محفوظة</div>`;
+    return;
+  }
+  el.innerHTML = blends.map(b=>`
+    <div class="blend-card">
+      <div class="item-top">
+        <h3>${esc(b.name)}</h3>
+        <div class="item-icons">
+          <button class="icon-btn" data-bedit="${b.id}">✏️</button>
+          <button class="icon-btn" data-bdel="${b.id}">🗑️</button>
+        </div>
+      </div>
+      ${b.ingredients.map(ing=>`<div class="ing-row"><span>${esc(ing.name)}</span><span>${esc(ing.amount)} ${esc(ing.unit)}</span></div>`).join("")}
+      ${b.notes?`<div class="blend-notes">${esc(b.notes)}</div>`:""}
+      <button class="btn sage small" data-bprep="${b.id}" style="margin-top:10px;">🧪 تحضير (خصم المكونات من المخزون)</button>
+    </div>
+  `).join("");
+  markReveal(el);
+  setTimeout(setupReveal, 20);
+}
+document.getElementById("addBlendBtn").addEventListener("click", ()=>openBlendModal(null));
+document.getElementById("blendsList").addEventListener("click", async e=>{
+  const editId = e.target.closest("[data-bedit]")?.dataset.bedit;
+  if(editId) return openBlendModal(editId);
+  const delId = e.target.closest("[data-bdel]")?.dataset.bdel;
+  if(delId){ blends = blends.filter(b=>b.id!==delId); await storeSet("blends", blends); renderBlends(); renderHome(); return; }
+  const prepId = e.target.closest("[data-bprep]")?.dataset.bprep;
+  if(prepId){
+    const b = blends.find(x=>x.id===prepId);
+    for(const ing of b.ingredients) await deductFromWarehouse(ing.name, ing.amount, ing.unit, "خلطات");
+    showToast(`تم خصم مكونات "${b.name}" من المخزون ✅`);
+  }
+});
+function openBlendModal(id){
+  const isNew = !id;
+  const b = isNew? {name:"", ingredients:[{name:"",amount:"",unit:"جرام"}], notes:""} : JSON.parse(JSON.stringify(blends.find(x=>x.id===id)));
+  openModal(isNew?"➕ إضافة خلطة":"✏️ تعديل الخلطة", `
+    <div class="field-grid">
+      <div class="field"><label>اسم الخلطة</label><input id="blName" value="${esc(b.name)}"></div>
+      <div id="ingList"></div>
+      <button class="btn ghost small" id="addIngBtn">➕ إضافة مكوّن</button>
+      <div class="field"><label>ملاحظات (طريقة التحضير)</label><textarea id="blNotes" rows="3">${esc(b.notes)}</textarea></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn sage" id="blSave" style="flex:1;">💾 حفظ</button>
+      <button class="btn ghost" id="blCancel">إلغاء</button>
+    </div>
+  `, body=>{
+    function drawIngs(){
+      body.querySelector("#ingList").innerHTML = b.ingredients.map((ing,i)=>`
+        <div style="display:flex; gap:6px; margin-bottom:6px;">
+          <input placeholder="اسم المكوّن" value="${esc(ing.name)}" data-ingname="${i}" style="flex:2;">
+          <input placeholder="كمية" type="number" value="${esc(ing.amount)}" data-ingamt="${i}" style="flex:1;">
+          <input placeholder="وحدة" value="${esc(ing.unit)}" data-ingunit="${i}" style="flex:1;">
+          <button class="icon-btn" data-ingdel="${i}">🗑️</button>
+        </div>`).join("");
+    }
+    drawIngs();
+    body.querySelector("#addIngBtn").addEventListener("click", ()=>{ b.ingredients.push({name:"",amount:"",unit:"جرام"}); drawIngs(); });
+    body.addEventListener("input", e=>{
+      const ni=e.target.closest("[data-ingname]")?.dataset.ingname; if(ni!==undefined) b.ingredients[+ni].name=e.target.value;
+      const ai=e.target.closest("[data-ingamt]")?.dataset.ingamt; if(ai!==undefined) b.ingredients[+ai].amount=parseFloat(e.target.value)||0;
+      const ui=e.target.closest("[data-ingunit]")?.dataset.ingunit; if(ui!==undefined) b.ingredients[+ui].unit=e.target.value;
+    });
+    body.addEventListener("click", e=>{
+      const di = e.target.closest("[data-ingdel]")?.dataset.ingdel;
+      if(di!==undefined){ b.ingredients.splice(+di,1); drawIngs(); }
+    });
+    body.querySelector("#blCancel").addEventListener("click", closeModal);
+    body.querySelector("#blSave").addEventListener("click", async ()=>{
+      const name = body.querySelector("#blName").value.trim();
+      if(!name){ showToast("اكتب اسم الخلطة"); return; }
+      b.name = name;
+      b.notes = body.querySelector("#blNotes").value.trim();
+      b.ingredients = b.ingredients.filter(x=>x.name && x.name.trim());
+      if(isNew) blends.push({ id:uid(), ...b });
+      else { const orig = blends.find(x=>x.id===id); Object.assign(orig, b); }
+      await storeSet("blends", blends);
+      closeModal(); renderBlends(); renderHome();
+      showToast("تم حفظ الخلطة ✅");
+    });
+  });
+}
+
+/* ================= SYNC / QR ================= */
+document.querySelectorAll(".sync-tab").forEach(t=>t.addEventListener("click", ()=>{
+  document.querySelectorAll(".sync-tab").forEach(x=>x.classList.remove("active"));
+  t.classList.add("active");
+  const isGen = t.dataset.sync==="gen";
+  document.getElementById("syncGen").style.display = isGen?"block":"none";
+  document.getElementById("syncScan").style.display = isGen?"none":"block";
+  if(!isGen) stopScan(false); else stopScan(true);
+}));
+
+document.getElementById("genQrBtn").addEventListener("click", ()=>{
+  const payload = { v:1, t:Date.now() };
+  if(document.getElementById("incWarehouse").checked) payload.warehouse = warehouse;
+  if(document.getElementById("incExtras").checked) payload.extras = extras;
+  if(document.getElementById("incBlends").checked) payload.blends = blends;
+  if(document.getElementById("incCatalog").checked) payload.shopCatalog = shopCatalog;
+
+  const json = JSON.stringify(payload);
+  const holder = document.getElementById("qrHolder");
+  const warn = document.getElementById("qrTooBig");
+  holder.innerHTML = ""; warn.style.display = "none";
+
+  if(json.length > 2400){
+    warn.style.display = "block";
+    warn.textContent = `⚠️ البيانات المختارة كبيرة (${json.length} حرف) وممكن الكود ميتمسحش بسهولة. جرب تقلل الأقسام المختارة، أو استخدم عنصر واحد بس في كل مرة.`;
+  }
+  holder.style.display = "flex";
+  try{
+    new QRCode(holder, { text: json, width:220, height:220, correctLevel: QRCode.CorrectLevel.L });
+    showToast("تم توليد الكود ✅");
+  }catch(err){
+    holder.innerHTML = `<div style="color:#111; font-size:12px; max-width:220px;">تعذّر توليد الكود — قلل حجم البيانات وحاول تاني.</div>`;
+  }
+});
+
+let scanStream=null, scanRAF=null;
+document.getElementById("startScanBtn").addEventListener("click", async ()=>{
+  const video = document.getElementById("scanVideo");
+  try{
+    scanStream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode:"environment" } });
+    video.srcObject = scanStream; video.style.display="block"; await video.play();
+    tickScan();
+  }catch(err){
+    showToast("تعذّر تشغيل الكاميرا — تأكد من إذن الوصول");
+  }
+});
+function tickScan(){
+  const video = document.getElementById("scanVideo");
+  const canvas = document.getElementById("scanCanvas");
+  if(!video.videoWidth){ scanRAF = requestAnimationFrame(tickScan); return; }
+  canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(video, 0,0, canvas.width, canvas.height);
+  const img = ctx.getImageData(0,0, canvas.width, canvas.height);
+  const code = window.jsQR ? jsQR(img.data, canvas.width, canvas.height) : null;
+  if(code && code.data){
+    handleScanned(code.data);
+    return;
+  }
+  scanRAF = requestAnimationFrame(tickScan);
+}
+function stopScan(clearVideo){
+  if(scanRAF) cancelAnimationFrame(scanRAF);
+  if(scanStream){ scanStream.getTracks().forEach(t=>t.stop()); scanStream=null; }
+  if(clearVideo){ const v=document.getElementById("scanVideo"); v.style.display="none"; v.srcObject=null; }
+}
+async function handleScanned(text){
+  stopScan(true);
+  let data;
+  try{ data = JSON.parse(text); }catch(e){
+    showToast("الكود ده مش من تطبيق الأسواني"); return;
+  }
+  const box = document.getElementById("scanResultBox");
+  let summary = [];
+  if(data.warehouse) summary.push(`📦 ${Object.keys(data.warehouse).length} صنف بالمخزن`);
+  if(data.extras) summary.push(`🌹 ${data.extras.length} صنف إضافي`);
+  if(data.blends) summary.push(`🧪 ${data.blends.length} خلطة`);
+  if(data.shopCatalog) summary.push(`🌿 ${Object.values(data.shopCatalog).reduce((a,b)=>a+b.length,0)} صنف بالكتالوج`);
+  box.innerHTML = `<b>تم قراءة الكود:</b><br>${summary.join(" • ")||"لا توجد بيانات معروفة"}<br><br>
+    <button class="btn gold small" id="mergeScanBtn">✅ دمج البيانات دلوقتي</button>`;
+  box.style.display = "block";
+  document.getElementById("mergeScanBtn").addEventListener("click", async ()=>{
+    if(data.warehouse){ for(const [n,d] of Object.entries(data.warehouse)) await mergeIntoWarehouse(n, d.qty, d.unit, d.category, d.source); }
+    if(data.extras){ data.extras.forEach(x=>{ if(!extras.find(e=>e.name===x.name)) extras.push({...x, id:uid()}); }); await storeSet("extras", extras); }
+    if(data.blends){ data.blends.forEach(b=>{ if(!blends.find(x=>x.name===b.name)) blends.push({...b, id:uid()}); }); await storeSet("blends", blends); }
+    if(data.shopCatalog){ Object.entries(data.shopCatalog).forEach(([c,items])=>{ if(!shopCatalog[c]) shopCatalog[c]=[]; items.forEach(it=>{ if(!shopCatalog[c].find(x=>x.name===it.name)) shopCatalog[c].push({...it, id:uid()}); }); }); await storeSet("shopCatalog", shopCatalog); }
+    renderAll();
+    showToast("تم دمج البيانات بنجاح ✅");
+  });
+}
+
+/* ================= RENDER ALL ================= */
+function renderAll(){
+  renderHome();
+  renderCatalog();
+  renderWarehouse();
+  renderOrders();
+  renderExtras();
+  renderBlends();
+}
+
+/* ================= START ================= */
+(async function start(){
+  await loadAll();
+  document.querySelector(".brand-name").textContent = shopInfo.name || "الأسواني";
+  switchTab("home");
+})();
+
+})();
+</script>
+</body>
+</html>
